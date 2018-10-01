@@ -34,3 +34,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Unity3D Generated Folders/files for a project
+/Packages/
+/ProjectSettings/
