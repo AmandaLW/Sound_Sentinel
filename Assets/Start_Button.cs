@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Start_Button : MonoBehaviour {
-	
-     void OnClick(){
-			Debug.Log("onclick");
+
+    public void OnClick()
+       {
+        Debug.Log("onclick");
 		    string sceneName = "Sound_Sentinel";
-			
             SceneManager.LoadScene(sceneName);
-			
 	   }
 	   
 }
