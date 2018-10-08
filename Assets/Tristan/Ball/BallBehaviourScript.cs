@@ -40,6 +40,8 @@ public class BallBehaviourScript : MonoBehaviour {
 		public float level;
 		public float screenLocation;
 		private Material ballMaterial;
+
+        private float CountDown = -1f;
 		
 		//public GameManager gameManager;  // remove?
 		
@@ -59,7 +61,7 @@ public class BallBehaviourScript : MonoBehaviour {
 		//Instantiate (ball);
 
 		transform.position = new Vector3 (Random.Range (-level, level), Random.Range (-level, level), screenLocation);
-		Vector3 gravitationPoint = new Vector3 (0,2,-5);
+		Vector3 gravitationPoint = new Vector3 (0,1,-5);
 		ballRigidbody.velocity = gravitationPoint - transform.position;
 		ballRigidbody.velocity = ballSpeed * ballRigidbody.velocity.normalized;
 		level = level++;
@@ -83,14 +85,15 @@ public class BallBehaviourScript : MonoBehaviour {
 			// Add 1 to score
 		}
 
+        CountDown = 200f;
 
-	}
+    }
 
 
 
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		// continuous spawning
 		if (transform.position.z < -1 || transform.position.z > 30 || transform.position.y > 8) {
 			//ballMaterial = new Material(HitBallMaterial);
@@ -100,11 +103,18 @@ public class BallBehaviourScript : MonoBehaviour {
 				ballMaterial.color = Color.blue;
 			spawnBall ();
 		}
-	//Time function to spawn ball (based of random * 1000ms?)
-		//spawnBall();
+
+        CountDown--;
+        if(CountDown == 0)
+        {
+            spawnBall();
+        }
+
+    //Time function to spawn ball (based of random * 1000ms?)
+    //spawnBall();
 
 
-		}
+    }
 
 
 	}
