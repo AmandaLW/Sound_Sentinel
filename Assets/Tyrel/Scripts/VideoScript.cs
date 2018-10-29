@@ -6,12 +6,8 @@ using UnityEngine.UI;
 
 public class VideoScript : MonoBehaviour
 {
-    //Raw Image to Show Video Images [Assign from the Editor]
-    //public  RawImage textureImage;
     //Video To Play [Assign from the Editor]
     public VideoClip videoToPlay;
-    //Video Texture [Assign from the editor]
-    //public RenderTexture videoTexture;
 
     private VideoPlayer videoPlayer;
     private VideoSource videoSource;
@@ -40,12 +36,7 @@ public class VideoScript : MonoBehaviour
         //Add AudioSource
         audioSource = gameObject.AddComponent<AudioSource>();
 
-        //Assign the target Texture and render mode
-        //RenderTexture videoTexture = new RenderTexture(1920, 1080, 1, RenderTextureFormat.ARGB32);
-        //videoTexture.Create();
-        //gameObject.AddComponent<RenderTexture>();
-        //RenderTexture videoTexture = gameObject.GetComponent<RenderTexture>();
-        //videoPlayer.targetTexture = videoTexture;
+        //Set display target to override current object material
         videoPlayer.renderMode = UnityEngine.Video.VideoRenderMode.MaterialOverride;
 
         //Disable Play on Awake for both Video and Audio
