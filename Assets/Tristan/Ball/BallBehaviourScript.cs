@@ -44,12 +44,28 @@ public class BallBehaviourScript : MonoBehaviour {
         private float CountDown = -1f;
 		
 		//public GameManager gameManager;  // remove?
-		
+	/*  OLD	
 	// Use this for initialization
 	void Start () {
 		ballRigidbody = GetComponent<Rigidbody> ();
 		spawnBall();
 		level = 5f;
+		screenLocation = 30f;
+		ballMaterial = GetComponent<Renderer>().material;
+		//ballMaterial.color = Color.red;
+	}*/
+	
+		void Start () {
+		ballRigidbody = GetComponent<Rigidbody> ();
+
+        int zed = 0;
+        do
+            {
+                spawnBall();
+                zed++;
+            } while (zed < 10);
+        
+        level = 5f;
 		screenLocation = 30f;
 		ballMaterial = GetComponent<Renderer>().material;
 		//ballMaterial.color = Color.red;
