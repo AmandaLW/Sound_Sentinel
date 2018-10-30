@@ -9,7 +9,8 @@ public class ScoreKeeping : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        scoreboard = gameObject.GetComponent<Text>();        
+        scoreboard = gameObject.GetComponent<Text>();     
+        
 	}
 	
 	// Update is called once per frame
