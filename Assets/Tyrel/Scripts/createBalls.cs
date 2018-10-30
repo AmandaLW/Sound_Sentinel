@@ -18,10 +18,10 @@ public class createBalls : MonoBehaviour {
     private float speed;
     private float timer = 0;
 
-    //private const int MAX_x = ??;
-    //private const int MAX_y = ??;
+    private const int MAX_x = 15;
+    private const int MAX_y = 15;
     private const int MAX_targetx = 3;
-    private const int MAX_targety = 6;
+    private const int MAX_targety = 3;
 
     // Use this for initialization
     void Start () {
@@ -44,7 +44,7 @@ public class createBalls : MonoBehaviour {
             GameObject temp = Instantiate(ball, new Vector3(Random.Range(-x,x), Random.Range(-y,y), z), Quaternion.identity) as GameObject;
             Rigidbody rb = temp.gameObject.GetComponent<Rigidbody>();
 
-            target = new Vector3(Random.Range(-target_x, target_x), Random.Range(-target_y, target_y), 0);
+            target = new Vector3(Random.Range(-target_x, target_x), Random.Range(-target_y+1, target_y+1), 0);
 
             var heading = target - temp.transform.position; 
 
@@ -53,8 +53,10 @@ public class createBalls : MonoBehaviour {
 
             //numberOfBalls += 1;
             speed += (float)0.2;
-            x += (float)0.5;
-            y += (float)0.5;
+            if (x < MAX_x)
+                x += (float)0.5;
+            if (y < MAX_y)
+                y += (float)0.5;
             if (frequency > 0.001)
                 frequency -= (float)0.01;
             if (target_x < MAX_targetx)

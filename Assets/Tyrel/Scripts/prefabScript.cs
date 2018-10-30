@@ -6,6 +6,7 @@ public class prefabScript : MonoBehaviour {
     public Transform[] prefabItems;
     //public Transform spherefab;
     public int creationNumber; //[Assign in Editor]
+    public int delay_in_seconds;
 
 	// Use this for initialization
 	void Start () {
@@ -36,7 +37,7 @@ public class prefabScript : MonoBehaviour {
 
             //Instantiate(cubefab, new Vector3(pos1, 0, 5), Quaternion.identity);
             //Instantiate(spherefab, new Vector3(pos2, 0, 5), Quaternion.identity);
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(delay_in_seconds);
         }
     }
 }
