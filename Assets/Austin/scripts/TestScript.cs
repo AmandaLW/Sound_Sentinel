@@ -14,27 +14,34 @@ public class TestScript : MonoBehaviour {
         testMenuCanvas.enabled = false;
         mainMenuCanvas = mainMenuCanvas.GetComponent<Canvas>();
         mainMenuCanvas.enabled = true;
-        Wait();
+        Wait(5);
         Debug.Log("entering help menu");
         mainMenuCanvas = mainMenuCanvas.GetComponent<Canvas>();
         mainMenuCanvas.enabled = false;
         helpMenuCanvas = helpMenuCanvas.GetComponent<Canvas>();
         helpMenuCanvas.enabled = true;
         Debug.Log("leaving help");
-        Wait();
+        Wait(5);
         Debug.Log("entering main menu");
         mainMenuCanvas = mainMenuCanvas.GetComponent<Canvas>();
         mainMenuCanvas.enabled = true;
         helpMenuCanvas = helpMenuCanvas.GetComponent<Canvas>();
         helpMenuCanvas.enabled = false;
-        Wait();
+        Wait(5);
         string sceneName = "Sound_Sentinel";
         SceneManager.LoadScene(sceneName);
     }
-    IEnumerator Wait()
+    /*IEnumerator Wait()
     {
         Debug.Log("waiting");
         yield return new WaitForSeconds(5);
      
+    }*/
+    void Wait(int time)
+    {
+        while(time-Time.deltaTime > 0f)
+        {
+            //do nothing
+        }
     }
 }
