@@ -20,8 +20,8 @@ public class createBalls : MonoBehaviour {
 
     private const int MAX_x = 15;
     private const int MAX_y = 15;
-    private const int MAX_targetx = 3;
-    private const int MAX_targety = 3;
+    private const float MAX_targetx = 2;
+    private const float MAX_targety = (float)0.5;
 
     // Use this for initialization
     void Start () {
