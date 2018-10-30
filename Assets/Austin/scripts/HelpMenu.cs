@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class HelpMenu : MonoBehaviour {
        void SwapScene(){
+            
             SceneManager.LoadScene(1);
 	   }
     
