@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Start_Script : MonoBehaviour {
+public class Test_Menu_Script : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
