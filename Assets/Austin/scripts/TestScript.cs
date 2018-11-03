@@ -14,20 +14,20 @@ public class TestScript : MonoBehaviour {
         testMenuCanvas.enabled = false;
         mainMenuCanvas = mainMenuCanvas.GetComponent<Canvas>();
         mainMenuCanvas.enabled = true;
-        Wait(5);
+        //Update();
         Debug.Log("entering help menu");
         mainMenuCanvas = mainMenuCanvas.GetComponent<Canvas>();
         mainMenuCanvas.enabled = false;
         helpMenuCanvas = helpMenuCanvas.GetComponent<Canvas>();
         helpMenuCanvas.enabled = true;
         Debug.Log("leaving help");
-        Wait(5);
+        //Update();
         Debug.Log("entering main menu");
         mainMenuCanvas = mainMenuCanvas.GetComponent<Canvas>();
         mainMenuCanvas.enabled = true;
         helpMenuCanvas = helpMenuCanvas.GetComponent<Canvas>();
         helpMenuCanvas.enabled = false;
-        Wait(5);
+        //Update();
         string sceneName = "Sound_Sentinel";
         SceneManager.LoadScene(sceneName);
     }
@@ -37,11 +37,12 @@ public class TestScript : MonoBehaviour {
         yield return new WaitForSeconds(5);
      
     }*/
-    void Wait(int time)
+  /*  void Wait(int time)
     {
         while(time-Time.deltaTime > 0f)
         {
             //do nothing
         }
-    }
+    } */
+ 
 }
