@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class createBalls : MonoBehaviour {
+public class CreateBalls : MonoBehaviour {
     public GameObject ball;
     public float frequency;
     public float start_speed;
@@ -22,6 +22,7 @@ public class createBalls : MonoBehaviour {
     private const int MAX_y = 15;
     private const float MAX_targetx = 2;
     private const float MAX_targety = (float)0.5;
+    private const int MAX_Speed = 10;
 
     // Use this for initialization
     void Start () {
@@ -36,13 +37,14 @@ public class createBalls : MonoBehaviour {
         //what algorithm could I use??
 
         timer -= Time.deltaTime;
-        start_speed = speed;
+        //start_speed = speed;
 
         
         if(timer <= 0f)
         {
             GameObject temp = Instantiate(ball, new Vector3(Random.Range(-x,x), Random.Range(-y,y), z), Quaternion.identity) as GameObject;
             Rigidbody rb = temp.gameObject.GetComponent<Rigidbody>();
+            DestroyBall tempscript = temp.gameObject.GetComponent<DestroyBall>();
 
             target = new Vector3(Random.Range(-target_x, target_x), Random.Range(-target_y+1, target_y+1), 0);
 
@@ -50,9 +52,11 @@ public class createBalls : MonoBehaviour {
 
             rb.velocity = ((heading / heading.magnitude) * speed);
             rb.velocity = heading.normalized * speed;
+            tempscript.UpdateSpeed(speed);
 
             //numberOfBalls += 1;
-            speed += (float)0.2;
+            if (speed < MAX_Speed)
+                speed += (float)0.2;
             if (x < MAX_x)
                 x += (float)0.5;
             if (y < MAX_y)
