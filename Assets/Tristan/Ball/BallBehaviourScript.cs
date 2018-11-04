@@ -1,4 +1,3 @@
-﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,11 +40,9 @@ public class BallBehaviourScript : MonoBehaviour {
 		public float level;
 		public float screenLocation;
 		private Material ballMaterial;
-
-        private float CountDown = -10f;
 		
 		//public GameManager gameManager;  // remove?
-	/*  OLD	
+		
 	// Use this for initialization
 	void Start () {
 		ballRigidbody = GetComponent<Rigidbody> ();
@@ -54,31 +51,15 @@ public class BallBehaviourScript : MonoBehaviour {
 		screenLocation = 30f;
 		ballMaterial = GetComponent<Renderer>().material;
 		//ballMaterial.color = Color.red;
-	}*/
-	
-		void Start () {
-		ballRigidbody = GetComponent<Rigidbody> ();
-
-        int zed = 0;
-        do
-            {
-                spawnBall();
-                zed++;
-            } while (zed < 10);
-        
-        level = 5f;
-		screenLocation = 30f;
-		ballMaterial = GetComponent<Renderer>().material;
-		//ballMaterial.color = Color.red;
 	}
 
 	void spawnBall()
 	{
-        // create a clone of ball, at 100 100 (100 can be variables) Also, store as a rigid body?
-        //Instantiate (ball);
-        GameObject newball = Instantiate(ball, new Vector3(UnityEngine.Random.Range(-level, level), UnityEngine.Random.Range(-level, level), screenLocation)) as GameObject;
-		//transform.position = new Vector3 (Random.Range (-level, level), Random.Range (-level, level), screenLocation);
-		Vector3 gravitationPoint = new Vector3 (0,1,-5);
+		// create a clone of ball, at 100 100 (100 can be variables) Also, store as a rigid body?
+		//Instantiate (ball);
+
+		transform.position = new Vector3 (Random.Range (-level, level), Random.Range (-level, level), screenLocation);
+		Vector3 gravitationPoint = new Vector3 (0,2,-5);
 		ballRigidbody.velocity = gravitationPoint - transform.position;
 		ballRigidbody.velocity = ballSpeed * ballRigidbody.velocity.normalized;
 		level = level++;
@@ -90,12 +71,7 @@ public class BallBehaviourScript : MonoBehaviour {
 		//ball.velocity = new Vector3 (ballSpeed, 0.0f, 0.0f);
 	}
 
-    private GameObject Instantiate(GameObject ball, Vector3 vector3)
-    {
-        throw new NotImplementedException();
-    }
-
-    void OnCollisionExit (Collision other){
+	void OnCollisionExit (Collision other){
 		if (other.transform.name == "P A D L E"){
 			//change color
 			ballMaterial.color = Color.blue;
@@ -107,17 +83,16 @@ public class BallBehaviourScript : MonoBehaviour {
 			// Add 1 to score
 		}
 
-        CountDown = 200f;
 
-    }
-
+	}
 
 
 
-    // Update is called once per frame
-    void Update () {
+	
+	// Update is called once per frame
+	void Update () {
 		// continuous spawning
-		if (transform.position.z < -1 || transform.position.z > 30 || transform.position.y > 8) {
+		if (transform.position.z < -5) {
 			//ballMaterial = new Material(HitBallMaterial);
 			if(ballMaterial.color == Color.blue)				
 				ballMaterial.color = Color.red;
@@ -125,18 +100,11 @@ public class BallBehaviourScript : MonoBehaviour {
 				ballMaterial.color = Color.blue;
 			spawnBall ();
 		}
-
-        CountDown++;
-        if(CountDown == 0)
-        {
-            spawnBall();
-        }
-
-    //Time function to spawn ball (based of random * 1000ms?)
-    //spawnBall();
+	//Time function to spawn ball (based of random * 1000ms?)
+		//spawnBall();
 
 
-    }
+		}
 
 
 	}
