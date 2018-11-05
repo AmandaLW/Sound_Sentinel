@@ -19,10 +19,13 @@ public class DestroyBall : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (rb.position.x > window || rb.position.x < -window || rb.position.y > window || rb.position.y < -window || rb.position.z > window)
+        {
             Destroy(gameObject);
+        }
+            
         if(rb.position.z < -5)
         {
-            if(rb.position.x < failwindow && rb.position.x > -failwindow && rb.position.y < failwindow && rb.position.y > -failwindow)
+            /*if(rb.position.x < failwindow && rb.position.x > -failwindow && rb.position.y < failwindow && rb.position.y > -failwindow)
             {
                 temp.FailedCollision(speed);
                 //Debug.Log(rb.position);
@@ -30,7 +33,7 @@ public class DestroyBall : MonoBehaviour {
                 rb.angularVelocity = Vector3.zero;
                 rb.Sleep();
             }
-            else
+            else*/
                 Destroy(gameObject);
         }
     }

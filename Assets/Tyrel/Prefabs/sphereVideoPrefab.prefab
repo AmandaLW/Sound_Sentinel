@@ -23,8 +23,8 @@ GameObject:
   - component: {fileID: 23647506358326574}
   - component: {fileID: 135943273620711256}
   - component: {fileID: 54236152340827360}
-  - component: {fileID: 114093414338240938}
   - component: {fileID: 114382598274405320}
+  - component: {fileID: 114093414338240938}
   m_Layer: 0
   m_Name: sphereVideoPrefab
   m_TagString: Untagged
