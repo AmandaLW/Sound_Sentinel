@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class VideoScript : MonoBehaviour
 {
     //Video To Play [Assign from the Editor]
-    public VideoClip videoToPlay;
+    private VideoClip videoToPlay;
 
     private VideoPlayer videoPlayer;
     private VideoSource videoSource;
@@ -15,11 +15,40 @@ public class VideoScript : MonoBehaviour
     //Audio
     private AudioSource audioSource;
 
+    string m_path;// = Application.dataPath + "/Tyrel/Videos/";
+    string videoList;// = Application.dataPath + "/Tyrel/Videos/VideoList.list";
+    //string[] videos = System.IO.File.ReadAllLines(Application.dataPath + "/Tyrel/Videos/VideoList.list");
+
+    //string[] videos;
+
     // Use this for initialization
     void Start()
     {
-        Application.runInBackground = true;
-        StartCoroutine(playVideo());
+        string temp;
+
+        m_path = Application.dataPath + "/Tyrel/Videos/";
+        videoList = m_path + "VideoList.list";
+
+        string[] videos = System.IO.File.ReadAllLines(videoList);
+
+        for(int i=0; i< videos.Length; i++)
+        {
+            temp = videos[i].Substring(0, 4);
+
+            if (videos[i].Substring(0, 2) == "NO")
+            {
+                videos[i] = "";
+            }
+            else if (temp != "http")
+            {
+                temp = videos[i];
+                videos[i] = "file:///" + m_path + temp;
+            }
+            
+        }
+
+        PlayVideo(videos[Random.Range(0, videos.Length)]);
+        //Debug.Log("Returned from playing video");
     }
 
     //
@@ -28,7 +57,7 @@ public class VideoScript : MonoBehaviour
         
     }
 
-    IEnumerator playVideo()
+    void PlayVideo(string video)
     {
         //Add VideoPlayer to the GameObject
         videoPlayer = gameObject.AddComponent<VideoPlayer>();
@@ -37,27 +66,19 @@ public class VideoScript : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
 
         //Set display target to override current object material
-        videoPlayer.renderMode = UnityEngine.Video.VideoRenderMode.MaterialOverride;
+        videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
 
         //Disable Play on Awake for both Video and Audio
         videoPlayer.playOnAwake = false;
         audioSource.playOnAwake = false;
 
         //We want to play from video clip not from url
-        videoPlayer.source = VideoSource.VideoClip;
+        //videoPlayer.source = VideoSource.VideoClip;
+        videoPlayer.source = VideoSource.Url;
 
         //Set video To Play then prepare Audio to prevent Buffering
-        videoPlayer.clip = videoToPlay;
-        videoPlayer.Prepare();
-
-        //Wait until video is prepared
-        /*while (!videoPlayer.isPrepared)
-        {
-            Debug.Log("Preparing Video");
-            yield return null;
-        }*/
-
-        //Debug.Log("Done Preparing Video");
+        //videoPlayer.clip = videoToPlay;
+        videoPlayer.url = video;
 
         //Set Audio Output to AudioSource
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
@@ -71,15 +92,5 @@ public class VideoScript : MonoBehaviour
 
         //Play Sound
         audioSource.Play();
-
-        /*Debug.Log("Playing Video");
-        while (videoPlayer.isPlaying)
-        {
-            Debug.LogWarning("Video Time: " + Mathf.FloorToInt((float)videoPlayer.time));
-            yield return null;
-        }
-
-        Debug.Log("Done Playing Video");*/
-        yield return null;
     }
 }
