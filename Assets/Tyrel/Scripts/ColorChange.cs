@@ -24,12 +24,9 @@ public class ColorChange : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "ball")
-        {
-            ballRenderer.material.color = new Color(red, green, blue);
-            red += 50;
-            green += increment;
-            blue += increment;
-        }
+        ballRenderer.material.color = new Color(red, green, blue);
+        red += 50;
+        green += increment;
+        blue += increment;
     }
 }

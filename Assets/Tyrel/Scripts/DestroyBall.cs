@@ -28,13 +28,9 @@ public class DestroyBall : MonoBehaviour {
             if(rb.position.x < failwindow && rb.position.x > -failwindow && rb.position.y < failwindow && rb.position.y > -failwindow)
             {
                 temp.FailedCollision(speed);
-                //Debug.Log(rb.position);
-                //rb.velocity = Vector3.zero;
-                //rb.angularVelocity = Vector3.zero;
-                rb.Sleep();
+                //rb.Sleep();
             }
-            else
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -43,9 +39,9 @@ public class DestroyBall : MonoBehaviour {
         speed = spd;
     }
 
-    private void OnApplicationQuit()
+    /*private void OnApplicationQuit()
     {
         TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
         temp.TestRecords("DestroyBall", true);
-    }
+    }*/
 }
