@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Resume_Script : MonoBehaviour
-{
+public class ButtonDisable : MonoBehaviour {
+    public string buttonTag;
     GameObject[] tempObject;
 
     //shuts off buttons box colliders when the game is started again
-    void ResumeGame()
+    public void DisableButton()
     {
-        tempObject = GameObject.FindGameObjectsWithTag("button");
+        tempObject = GameObject.FindGameObjectsWithTag(buttonTag);
         for (int x = 0; x < tempObject.Length; x++)
         {
             tempObject[x].SetActive(false);
         }
     }
+
+
 }
