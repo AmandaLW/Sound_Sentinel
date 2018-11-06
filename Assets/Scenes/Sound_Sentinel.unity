@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.029494941, g: 0.042968474, b: 0.03205208, a: 1}
+  m_IndirectSpecularColor: {r: 0.029402424, g: 0.042875387, b: 0.031952523, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -440,6 +440,7 @@ GameObject:
   - component: {fileID: 106787221}
   - component: {fileID: 106787224}
   - component: {fileID: 106787220}
+  - component: {fileID: 106787225}
   m_Layer: 0
   m_Name: Pause_Menu_Canvas
   m_TagString: Untagged
@@ -539,6 +540,17 @@ MonoBehaviour:
   canvas: {fileID: 106787222}
   pauseButton: 344
   resumeButton: 97
+--- !u!114 &106787225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106787219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f941b94eb523d5944a68ca4c8e9ab9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &145200934
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,13 +713,14 @@ GameObject:
   - component: {fileID: 222125417}
   - component: {fileID: 222125416}
   - component: {fileID: 222125415}
+  - component: {fileID: 222125421}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!54 &222125415
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -809,39 +822,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &281495521
-Material:
-  serializedVersion: 6
+--- !u!114 &222125421
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Sprites/Default
-  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _AlphaTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - PixelSnap: 0
-    - _EnableExternalAlpha: 0
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_GameObject: {fileID: 222125414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f941b94eb523d5944a68ca4c8e9ab9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &339781680
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1116,40 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 458974, guid: 4d293c8e162f3874b982baadd71153d2,
     type: 2}
   m_PrefabInternal: {fileID: 1808573872}
---- !u!43 &994090040
+--- !u!21 &998756368
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Sprites/Default
+  m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!43 &1057994906
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1289,6 +1313,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1074949412}
   - component: {fileID: 1074949411}
+  - component: {fileID: 1074949413}
   m_Layer: 5
   m_Name: Logo
   m_TagString: Untagged
@@ -1360,6 +1385,17 @@ RectTransform:
   m_AnchoredPosition: {x: -1.55, y: 0}
   m_SizeDelta: {x: 1000, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1074949413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1074949410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f941b94eb523d5944a68ca4c8e9ab9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1111475419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: fa0a723e3534aca47bcf60641f2f3a8d,
@@ -1534,6 +1570,7 @@ GameObject:
   - component: {fileID: 1193237233}
   - component: {fileID: 1193237236}
   - component: {fileID: 1193237235}
+  - component: {fileID: 1193237239}
   - component: {fileID: 1193237234}
   - component: {fileID: 1193237237}
   - component: {fileID: 1193237238}
@@ -1672,6 +1709,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 120, y: 40, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1193237239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1193237232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f941b94eb523d5944a68ca4c8e9ab9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1256494952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,6 +1897,7 @@ GameObject:
   - component: {fileID: 1609195376}
   - component: {fileID: 1609195379}
   - component: {fileID: 1609195378}
+  - component: {fileID: 1609195382}
   - component: {fileID: 1609195377}
   - component: {fileID: 1609195380}
   - component: {fileID: 1609195381}
@@ -1998,6 +2047,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79143c3de70f8d4aa4f9278f6a16c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1609195382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1609195375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f941b94eb523d5944a68ca4c8e9ab9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1696674376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +2070,7 @@ GameObject:
   - component: {fileID: 1696674378}
   - component: {fileID: 1696674377}
   - component: {fileID: 1696674381}
+  - component: {fileID: 1696674382}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -2097,7 +2158,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad46d255c573cc641b2752d879eab820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoToPlay: {fileID: 32900000, guid: bd0e899fb22571645a7423e7f36500a8, type: 3}
+--- !u!114 &1696674382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1696674376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f941b94eb523d5944a68ca4c8e9ab9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1794122683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 146900, guid: 4d293c8e162f3874b982baadd71153d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1808573872}
+--- !u!114 &1794122685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1794122683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f941b94eb523d5944a68ca4c8e9ab9f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1808573872
 Prefab:
   m_ObjectHideFlags: 0
@@ -2140,11 +2227,11 @@ Prefab:
     - target: {fileID: 2348914, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 281495521}
+      objectReference: {fileID: 998756368}
     - target: {fileID: 3380982, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 994090040}
+      objectReference: {fileID: 1057994906}
     - target: {fileID: 408470, guid: 4d293c8e162f3874b982baadd71153d2, type: 2}
       propertyPath: m_LocalPosition.y
       value: 1.5
