@@ -6,49 +6,54 @@ using UnityEngine.UI;
 
 public class VideoScript : MonoBehaviour
 {
-    //Video To Play
+    //Define a variable that will hold the location of the video you want to play
     private VideoClip videoToPlay;
 
+    //Define variables to hold the videoplayer
     private VideoPlayer videoPlayer;
     private VideoSource videoSource;
 
-    //Audio
+    //Define a variable to hold the audioplayer
     private AudioSource audioSource;
 
-    string m_path;// = Application.dataPath + "/Tyrel/Videos/";
-    string videoList;// = Application.dataPath + "/Tyrel/Videos/VideoList.list";
-    //string[] videos = System.IO.File.ReadAllLines(Application.dataPath + "/Tyrel/Videos/VideoList.list");
-
-    //string[] videos;
+    //Define variables to hold the path of the files that list the viable items to be played
+    string m_path;
+    string videoList;
+    
+    //Define an array that will hold the video filenames to be loaded
+    string[] videos;
 
     // Use this for initialization
     void Start()
     {
-        string temp;
-
+        //Initialize the path and the filename
+        //Application.dataPath returns the Assets folder when being run in Unity
         m_path = Application.dataPath + "/Tyrel/Videos/";
         videoList = m_path + "VideoList.list";
 
-        string[] videos = System.IO.File.ReadAllLines(videoList);
-
+        //Read all lines from the file into the array
+        videos = System.IO.File.ReadAllLines(videoList);
+        
+        //loop through all lines read from file
         for(int i=0; i< videos.Length; i++)
         {
-            temp = videos[i].Substring(0, 4);
-
+            //NO is effectively the comment code for this list
+            //Check for a the comment code to be present
             if (videos[i].Substring(0, 2) == "NO")
             {
-                videos[i] = "";
+                //Set the line equal to a viable option of NO is present at the front of the line
+                videos[i] = ""; //*****MUST FIX******
             }
-            else if (temp != "http")
+            //If it is not a full URL then we must add a path to the filename
+            else if (videos[i].Substring(0, 4) != "http")
             {
-                temp = videos[i];
+                string temp = videos[i];
                 videos[i] = "file:///" + m_path + temp;
             }
             
         }
 
-        PlayVideo(videos);
-        //Debug.Log("Returned from playing video");
+        PlayVideo();
     }
 
     //
@@ -57,12 +62,12 @@ public class VideoScript : MonoBehaviour
         
     }
 
-    void PlayVideo(string[] videos)
+    void PlayVideo()
     {
         //Add VideoPlayer to the GameObject
         videoPlayer = gameObject.AddComponent<VideoPlayer>();
 
-        //Add AudioSource
+        //Add AudioSource to the GameObject
         audioSource = gameObject.AddComponent<AudioSource>();
 
         //Set display target to override current object material
@@ -72,12 +77,11 @@ public class VideoScript : MonoBehaviour
         videoPlayer.playOnAwake = false;
         audioSource.playOnAwake = false;
 
-        //We want to play from video clip not from url
-        //videoPlayer.source = VideoSource.VideoClip;
+        //We want to play from URL or path names
         videoPlayer.source = VideoSource.Url;
 
         //Set video To Play then prepare Audio to prevent Buffering
-        //videoPlayer.clip = videoToPlay;
+        //Random selection from list
         videoPlayer.url = videos[Random.Range(0, videos.Length)];
 
         //Set Audio Output to AudioSource
@@ -93,6 +97,8 @@ public class VideoScript : MonoBehaviour
         //Play Sound
         audioSource.Play();
     }
+
+    //This function reports to the testing system when the game is quit
     private void OnApplicationQuit()
     {
         TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();

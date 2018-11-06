@@ -28,10 +28,7 @@ public class DestroyBall : MonoBehaviour {
             if(rb.position.x < failwindow && rb.position.x > -failwindow && rb.position.y < failwindow && rb.position.y > -failwindow)
             {
                 temp.FailedCollision(speed);
-                //Debug.Log(rb.position);
-                //rb.velocity = Vector3.zero;
-                //rb.angularVelocity = Vector3.zero;
-                rb.Sleep();
+                //rb.Sleep();
             }
             else
                 Destroy(gameObject);
