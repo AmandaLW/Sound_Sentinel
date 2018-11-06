@@ -25,15 +25,15 @@ public class DestroyBall : MonoBehaviour {
             
         if(rb.position.z < -5)
         {
-            /*if(rb.position.x < failwindow && rb.position.x > -failwindow && rb.position.y < failwindow && rb.position.y > -failwindow)
+            if(rb.position.x < failwindow && rb.position.x > -failwindow && rb.position.y < failwindow && rb.position.y > -failwindow)
             {
                 temp.FailedCollision(speed);
                 //Debug.Log(rb.position);
-                rb.velocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
+                //rb.velocity = Vector3.zero;
+                //rb.angularVelocity = Vector3.zero;
                 rb.Sleep();
             }
-            else*/
+            else
                 Destroy(gameObject);
         }
     }
@@ -41,5 +41,11 @@ public class DestroyBall : MonoBehaviour {
     public void UpdateSpeed(float spd)
     {
         speed = spd;
+    }
+
+    private void OnApplicationQuit()
+    {
+        TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
+        temp.TestRecords("DestroyBall", true);
     }
 }

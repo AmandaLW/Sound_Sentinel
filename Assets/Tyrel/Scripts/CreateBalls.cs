@@ -71,4 +71,10 @@ public class CreateBalls : MonoBehaviour {
             timer = Random.Range(0, frequency);
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
+        temp.TestRecords("CreateBalls", true);
+    }
 }

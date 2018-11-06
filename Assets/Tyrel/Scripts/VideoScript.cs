@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class VideoScript : MonoBehaviour
 {
-    //Video To Play [Assign from the Editor]
+    //Video To Play
     private VideoClip videoToPlay;
 
     private VideoPlayer videoPlayer;
@@ -47,7 +47,7 @@ public class VideoScript : MonoBehaviour
             
         }
 
-        PlayVideo(videos[Random.Range(0, videos.Length)]);
+        PlayVideo(videos);
         //Debug.Log("Returned from playing video");
     }
 
@@ -57,7 +57,7 @@ public class VideoScript : MonoBehaviour
         
     }
 
-    void PlayVideo(string video)
+    void PlayVideo(string[] videos)
     {
         //Add VideoPlayer to the GameObject
         videoPlayer = gameObject.AddComponent<VideoPlayer>();
@@ -78,7 +78,7 @@ public class VideoScript : MonoBehaviour
 
         //Set video To Play then prepare Audio to prevent Buffering
         //videoPlayer.clip = videoToPlay;
-        videoPlayer.url = video;
+        videoPlayer.url = videos[Random.Range(0, videos.Length)];
 
         //Set Audio Output to AudioSource
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
@@ -92,5 +92,10 @@ public class VideoScript : MonoBehaviour
 
         //Play Sound
         audioSource.Play();
+    }
+    private void OnApplicationQuit()
+    {
+        TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
+        temp.TestRecords("VideoScript", true);
     }
 }

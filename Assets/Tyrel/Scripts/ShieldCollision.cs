@@ -24,4 +24,10 @@ public class ShieldCollision : MonoBehaviour {
             scoreScript.updateScore(1);
         }
     }
+
+    private void OnApplicationQuit()
+    {
+        TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
+        temp.TestRecords("ShieldCollision", true);
+    }
 }
