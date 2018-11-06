@@ -30,8 +30,7 @@ public class DestroyBall : MonoBehaviour {
                 temp.FailedCollision(speed);
                 //rb.Sleep();
             }
-            else
-                Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -40,9 +39,9 @@ public class DestroyBall : MonoBehaviour {
         speed = spd;
     }
 
-    private void OnApplicationQuit()
+    /*private void OnApplicationQuit()
     {
         TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
         temp.TestRecords("DestroyBall", true);
-    }
+    }*/
 }

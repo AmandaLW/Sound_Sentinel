@@ -5,6 +5,9 @@
 [Bb]uilds/
 Assets/AssetStoreTools*
 
+# Sound Sentinel Generated Files
+*.tst
+
 # Visual Studio cache directory
 .vs/
 
