@@ -22,12 +22,16 @@ public class CreateBalls : MonoBehaviour {
     private const int MAX_y = 15;
     private const float MAX_targetx = 2;
     private const float MAX_targety = (float)0.5;
-    private const int MAX_Speed = 30;
+    private int MAX_Speed;
 
     // Use this for initialization
     void Start () {
         speed = start_speed;
-	}
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Sound_Sentinel")
+            MAX_Speed = 10;
+        else
+            MAX_Speed = 30;
+    }
 	
 	// Update is called once per frame
 	void Update () {

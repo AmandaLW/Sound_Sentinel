@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54956192459446948}
   - component: {fileID: 114387109374151512}
   - component: {fileID: 114877798327026494}
+  - component: {fileID: 114039168901876880}
   m_Layer: 0
   m_Name: TP_ball
   m_TagString: ball
@@ -102,6 +103,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &114039168901876880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1447211876101610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5efbb4288fe8374c90af4362f4d09e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114387109374151512
 MonoBehaviour:
   m_ObjectHideFlags: 1

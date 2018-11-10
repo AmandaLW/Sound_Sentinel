@@ -27,9 +27,9 @@ public class TestingResults : MonoBehaviour {
         if (time < 0)
         {
             string dateandtime = System.DateTime.Now.ToString("HH:mm:ss");
-            writer.WriteLine(dateandtime);
-            writer.WriteLine("Current Fail Speed: " + failedSpeed);
-            writer.WriteLine("Number of Failed Balls: " + failedBalls);
+            writer.WriteLine(dateandtime + "  Current Fail Speed: " + failedSpeed + "  Number of Failed Balls: " + failedBalls);
+            //writer.WriteLine("Current Fail Speed: " + failedSpeed);
+            //writer.WriteLine("Number of Failed Balls: " + failedBalls);
             time = 15;
         }
 	}
@@ -41,6 +41,7 @@ public class TestingResults : MonoBehaviour {
         {
             failedSpeed = speed;
             time = 0;
+            TestRecords("Shield Collision fail speed: " + failedSpeed, false);
         }
     }
 
