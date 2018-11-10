@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 65875544039213780}
   - component: {fileID: 54375647063837876}
   - component: {fileID: 114819562690856046}
-  - component: {fileID: 114386234661139752}
   m_Layer: 0
   m_Name: Physics Cube
   m_TagString: FloorCube
@@ -127,17 +126,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114386234661139752
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002366927462888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361ea0cdc17f50c4eac7d0620c1eff9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114819562690856046
 MonoBehaviour:
   m_ObjectHideFlags: 1
