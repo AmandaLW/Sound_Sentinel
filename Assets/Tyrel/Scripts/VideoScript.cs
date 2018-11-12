@@ -22,6 +22,7 @@ public class VideoScript : MonoBehaviour
     
     //Define an array that will hold the video filenames to be loaded
     string[] videos;
+    int videoCount;
 
     // Use this for initialization
     void Start()
@@ -50,7 +51,7 @@ public class VideoScript : MonoBehaviour
                 string temp = videos[i];
                 videos[i] = "file:///" + m_path + temp;
             }
-            
+            videoCount = Random.Range(0, videos.Length);
         }
 
         PlayVideo();
@@ -59,7 +60,11 @@ public class VideoScript : MonoBehaviour
     //
     private void Update()
     {
-        
+        if(videoPlayer.isPlaying == false)
+        {
+            videoCount = (videoCount + 1) % videos.Length;
+            //PlayVideo();
+        }
     }
 
     void PlayVideo()
@@ -82,7 +87,7 @@ public class VideoScript : MonoBehaviour
 
         //Set video To Play then prepare Audio to prevent Buffering
         //Random selection from list
-        videoPlayer.url = videos[Random.Range(0, videos.Length)];
+        videoPlayer.url = videos[videoCount];
 
         //Set Audio Output to AudioSource
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
