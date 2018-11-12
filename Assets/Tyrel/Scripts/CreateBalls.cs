@@ -18,10 +18,10 @@ public class CreateBalls : MonoBehaviour {
     private float speed;
     private float timer = 0;
 
-    private const int MAX_x = 15;
-    private const int MAX_y = 15;
-    private const float MAX_targetx = 2;
-    private const float MAX_targety = (float)0.5;
+    private const int MAX_x = 10;
+    private const int MAX_y = 8;
+    private const float MAX_targetx = (float)0.5;
+    private const float MAX_targety = (float)0.25;
     private const float MIN_frequency = (float)0.7;
     private int MAX_Speed;
 
@@ -51,12 +51,12 @@ public class CreateBalls : MonoBehaviour {
             Rigidbody rb = temp.gameObject.GetComponent<Rigidbody>();
             DestroyBall tempscript = temp.gameObject.GetComponent<DestroyBall>();
 
-            target = new Vector3(Random.Range(-target_x, target_x), Random.Range(-target_y+1, target_y+1), 0);
+            target = new Vector3(Random.Range(-target_x, target_x), Random.Range(-target_y + (float)1.5, target_y + (float)1.5), 0);
 
             var heading = target - temp.transform.position; 
 
-            rb.velocity = ((heading / heading.magnitude) * speed);
-            rb.velocity = heading.normalized * speed;
+            //rb.velocity = ((heading / heading.magnitude) * speed);
+            rb.velocity = heading.normalized * Random.Range(start_speed, speed);
             tempscript.UpdateSpeed(speed);
 
             //numberOfBalls += 1;

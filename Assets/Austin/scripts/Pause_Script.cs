@@ -12,7 +12,8 @@ public class Pause_Script : MonoBehaviour {
     void Start()
     {
         canvasOff();
-        tempObjectTwo = GameObject.FindGameObjectsWithTag("button");
+        tempObjectTwo = GameObject.FindGameObjectsWithTag("Button");
+        Debug.Log(tempObjectTwo.Length);
         for (int x = 0; x < tempObjectTwo.Length; x++)
         {
           tempObjectTwo[x].SetActive(false);

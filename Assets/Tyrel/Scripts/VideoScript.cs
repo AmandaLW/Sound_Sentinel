@@ -87,6 +87,7 @@ public class VideoScript : MonoBehaviour
 
         //Set video To Play then prepare Audio to prevent Buffering
         //Random selection from list
+        videoCount = 3;
         videoPlayer.url = videos[videoCount];
 
         //Set Audio Output to AudioSource
@@ -96,6 +97,7 @@ public class VideoScript : MonoBehaviour
         videoPlayer.EnableAudioTrack(0, true);
         videoPlayer.SetTargetAudioSource(0, audioSource);
 
+        videoPlayer.isLooping = true;
         //Play Video
         videoPlayer.Play();
 
