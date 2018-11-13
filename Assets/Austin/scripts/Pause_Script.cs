@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Pause_Script : MonoBehaviour {
     public Canvas canvas;
-    public KeyCode pauseButton;
+    public KeyCode vivePauseButton;
+    public KeyCode keyboardPauseButton;
     public KeyCode resumeButton;
     GameObject tempObject;
     GameObject[] tempObjectTwo;
@@ -28,7 +29,7 @@ public class Pause_Script : MonoBehaviour {
     }
     void Update()
     {
-        if (Input.GetKey(pauseButton))
+        if (Input.GetKey(vivePauseButton) || Input.GetKey(keyboardPauseButton))
         {
             canvas.enabled = true;
             tempObject = GameObject.FindGameObjectWithTag("shield");
