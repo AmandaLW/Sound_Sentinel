@@ -13,7 +13,7 @@ public class CreateBalls : MonoBehaviour {
     private float target_y = 0;
     private float x = 0;
     private float y = 0;
-    private readonly float z = 30;
+    private readonly float z = 29;
 
     private float speed;
     private float timer = 0;

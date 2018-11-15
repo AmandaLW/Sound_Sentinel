@@ -97,7 +97,7 @@ public class VideoScript : MonoBehaviour
         videoPlayer.EnableAudioTrack(0, true);
         videoPlayer.SetTargetAudioSource(0, audioSource);
 
-        videoPlayer.isLooping = true;
+        //videoPlayer.isLooping = true;
         //Play Video
         videoPlayer.Play();
 
