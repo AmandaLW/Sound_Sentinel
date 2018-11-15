@@ -41,13 +41,22 @@ public class Pause_Script : MonoBehaviour {
             {
                 tempObjectTwo[x].SetActive(true);
             }
-
+            GameObject[] balls = GameObject.FindGameObjectsWithTag("ball");
+            for(int i=0; i<balls.Length; i++)
+            {
+                balls[i].GetComponent<Rigidbody>().Sleep();
+            }
 
         }
         if (Input.GetKey(resumeButton))
         {
             tempObject = GameObject.FindGameObjectWithTag("shield");
             tempObject.SetActive(true);
+            GameObject[] balls = GameObject.FindGameObjectsWithTag("ball");
+            for (int i = 0; i < balls.Length; i++)
+            {
+                balls[i].GetComponent<Rigidbody>().WakeUp();
+            }
         }
     }
 
