@@ -5,7 +5,7 @@ using UnityEngine;
 public class Pause_Script : MonoBehaviour {
     public Canvas canvas;
     public KeyCode vivePauseButton;
-    public KeyCode keyboardPauseButton;
+    public KeyCode keyboardPauseButton;// = "Escape";
     public KeyCode resumeButton;
     GameObject tempObject;
     GameObject[] tempObjectTwo;
@@ -29,6 +29,7 @@ public class Pause_Script : MonoBehaviour {
     }
     void Update()
     {
+        Debug.Log(keyboardPauseButton);
         if (Input.GetKey(vivePauseButton) || Input.GetKey(keyboardPauseButton))
         {
             canvas.enabled = true;
