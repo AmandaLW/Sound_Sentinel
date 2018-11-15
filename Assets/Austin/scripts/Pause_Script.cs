@@ -33,10 +33,10 @@ public class Pause_Script : MonoBehaviour {
         if (Input.GetKey(vivePauseButton) || Input.GetKey(keyboardPauseButton))
         {
             canvas.enabled = true;
-            tempObject = GameObject.FindGameObjectWithTag("shield");
-            tempObject.SetActive(false);
-            tempObject = GameObject.FindGameObjectWithTag("rightcontroller");
-            tempObject.SetActive(true);
+           // tempObject = GameObject.FindGameObjectWithTag("shield");
+           // tempObject.SetActive(false);
+           // tempObject = GameObject.FindGameObjectWithTag("rightcontroller");
+           // tempObject.SetActive(true);
            //GameObject.FindGameObjectWithTag("BallCreation").GetComponent<CreateBalls>().PauseCreation();
             for (int k = 0; k < tempObjectTwo.Length; k++)
             {
