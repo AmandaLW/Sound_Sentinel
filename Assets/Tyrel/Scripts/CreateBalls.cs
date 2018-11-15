@@ -82,4 +82,14 @@ public class CreateBalls : MonoBehaviour {
         TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
         temp.TestRecords("CreateBalls", true);
     }
+
+    public void PauseCreation()
+    {
+        enabled = false;
+    }
+
+    public void ResumeCreation()
+    {
+        enabled = true;
+    }
 }

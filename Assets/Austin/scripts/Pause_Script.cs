@@ -29,7 +29,7 @@ public class Pause_Script : MonoBehaviour {
     }
     void Update()
     {
-        Debug.Log(keyboardPauseButton);
+        //Debug.Log(keyboardPauseButton);
         if (Input.GetKey(vivePauseButton) || Input.GetKey(keyboardPauseButton))
         {
             canvas.enabled = true;
@@ -37,9 +37,10 @@ public class Pause_Script : MonoBehaviour {
             tempObject.SetActive(false);
             tempObject = GameObject.FindGameObjectWithTag("rightcontroller");
             tempObject.SetActive(true);
-            for (int x = 0; x < tempObjectTwo.Length; x++)
+           //GameObject.FindGameObjectWithTag("BallCreation").GetComponent<CreateBalls>().PauseCreation();
+            for (int k = 0; k < tempObjectTwo.Length; k++)
             {
-                tempObjectTwo[x].SetActive(true);
+                tempObjectTwo[k].SetActive(true);
             }
             GameObject[] balls = GameObject.FindGameObjectsWithTag("ball");
             for(int i=0; i<balls.Length; i++)
@@ -50,14 +51,8 @@ public class Pause_Script : MonoBehaviour {
         }
         if (Input.GetKey(resumeButton))
         {
-            tempObject = GameObject.FindGameObjectWithTag("shield");
-            tempObject.SetActive(true);
-            GameObject[] balls = GameObject.FindGameObjectsWithTag("ball");
-            for (int i = 0; i < balls.Length; i++)
-            {
-                balls[i].GetComponent<Rigidbody>().WakeUp();
-            }
+           // Resume_Script.ResumeGame();
         }
     }
-
+    
 }
