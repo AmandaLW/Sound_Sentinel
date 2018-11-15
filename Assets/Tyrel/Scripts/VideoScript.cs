@@ -57,8 +57,8 @@ public class VideoScript : MonoBehaviour
         PlayVideo();
     }
 
-    //
-    private void Update()
+    
+    void Update()
     {
         if(videoPlayer.isPlaying == false)
         {
@@ -87,7 +87,7 @@ public class VideoScript : MonoBehaviour
 
         //Set video To Play then prepare Audio to prevent Buffering
         //Random selection from list
-        videoCount = 3;
+        //videoCount = 3;
         videoPlayer.url = videos[videoCount];
 
         //Set Audio Output to AudioSource
