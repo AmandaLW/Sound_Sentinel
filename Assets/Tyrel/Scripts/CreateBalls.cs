@@ -25,6 +25,8 @@ public class CreateBalls : MonoBehaviour {
     private const float MIN_frequency = (float)0.7;
     private int MAX_Speed;
 
+    private bool pause = false;
+
     // Use this for initialization
     void Start () {
         speed = start_speed;
@@ -40,24 +42,28 @@ public class CreateBalls : MonoBehaviour {
 
         //Have score determine if a new ball should be launched
         //what algorithm could I use??
+        if (pause == false)
+        {
+            Creation();
+        }
+    }
 
+    private void Creation()
+    {
         timer -= Time.deltaTime;
         //start_speed = speed;
 
-        
-        if(timer <= 0f)
+
+        if (timer <= 0f)
         {
-            GameObject temp = Instantiate(ball, new Vector3(Random.Range(-x,x), Random.Range(-y,y), z), Quaternion.identity) as GameObject;
-            Rigidbody rb = temp.gameObject.GetComponent<Rigidbody>();
-            DestroyBall tempscript = temp.gameObject.GetComponent<DestroyBall>();
+            GameObject temp = Instantiate(ball, new Vector3(Random.Range(-x, x), Random.Range(-y, y), z), Quaternion.identity) as GameObject;
 
             target = new Vector3(Random.Range(-target_x, target_x), Random.Range(-target_y + (float)1.5, target_y + (float)1.5), 0);
 
-            var heading = target - temp.transform.position; 
+            var heading = target - temp.transform.position;
 
-            //rb.velocity = ((heading / heading.magnitude) * speed);
-            rb.velocity = heading.normalized * Random.Range(start_speed, speed);
-            tempscript.UpdateSpeed(speed);
+            temp.gameObject.GetComponent<Rigidbody>().velocity = heading.normalized * Random.Range(start_speed, speed);
+            temp.GetComponent<DestroyBall>().UpdateSpeed(speed);
 
             //numberOfBalls += 1;
             if (speed < MAX_Speed)
@@ -85,11 +91,13 @@ public class CreateBalls : MonoBehaviour {
 
     public void PauseCreation()
     {
-        enabled = false;
+        pause = true;
+        Debug.Log("Pause Ball Creation");
     }
 
     public void ResumeCreation()
     {
-        enabled = true;
+        pause = false;
+        Debug.Log("Resume Ball Creation");
     }
 }

@@ -18,10 +18,9 @@ public class Resume_Script : MonoBehaviour
         balls = GameObject.FindGameObjectsWithTag("ball");
         for (int i = 0; i < balls.Length; i++)
         {
-            Debug.Log("waking balls up");
-                balls[i].GetComponent<Rigidbody>().WakeUp();
+                balls[i].GetComponent<Start_and_Stop>().ResumeBall();
         }
-        //GameObject.FindGameObjectWithTag("BallCreation").GetComponent<CreateBalls>().ResumeCreation();
+        GameObject.FindGameObjectWithTag("Ball Creation").GetComponent<CreateBalls>().ResumeCreation();
 
     }
 }

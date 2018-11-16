@@ -45,8 +45,9 @@ public class Pause_Script : MonoBehaviour {
             GameObject[] balls = GameObject.FindGameObjectsWithTag("ball");
             for(int i=0; i<balls.Length; i++)
             {
-                balls[i].GetComponent<Rigidbody>().Sleep();
+                balls[i].GetComponent<Start_and_Stop>().PauseBall();
             }
+            GameObject.FindGameObjectWithTag("Ball Creation").GetComponent<CreateBalls>().PauseCreation();
 
         }
         if (Input.GetKey(resumeButton))
