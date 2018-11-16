@@ -48,7 +48,7 @@ public class Pause_Script : MonoBehaviour {
                 balls[i].GetComponent<Start_and_Stop>().PauseBall();
             }
             GameObject.FindGameObjectWithTag("Ball Creation").GetComponent<CreateBalls>().PauseCreation();
-
+            GameObject.FindGameObjectWithTag("Quad").GetComponent<VideoScript>().Pause();
         }
         if (Input.GetKey(resumeButton))
         {

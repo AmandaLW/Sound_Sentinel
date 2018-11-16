@@ -60,10 +60,9 @@ public class VideoScript : MonoBehaviour
     
     void Update()
     {
-        if(videoPlayer.isPlaying == false)
+        if (((float)videoPlayer.frameCount - videoPlayer.frame) < 10)
         {
-            videoCount = (videoCount + 1) % videos.Length;
-            //PlayVideo();
+            NextVideo();
         }
     }
 
@@ -89,6 +88,7 @@ public class VideoScript : MonoBehaviour
         //Random selection from list
         //videoCount = 3;
         videoPlayer.url = videos[videoCount];
+        //videoPlayer.loopPointReached += NextVideo();
 
         //Set Audio Output to AudioSource
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
@@ -103,6 +103,22 @@ public class VideoScript : MonoBehaviour
 
         //Play Sound
         audioSource.Play();
+    }
+
+    private void NextVideo()
+    {
+        videoCount = (videoCount + 1) % videos.Length;
+        PlayVideo();
+    }
+
+    public void Pause()
+    {
+        videoPlayer.Pause();
+    }
+
+    public void Resume()
+    {
+        videoPlayer.Play();
     }
 
     //This function reports to the testing system when the game is quit

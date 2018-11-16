@@ -21,6 +21,6 @@ public class Resume_Script : MonoBehaviour
                 balls[i].GetComponent<Start_and_Stop>().ResumeBall();
         }
         GameObject.FindGameObjectWithTag("Ball Creation").GetComponent<CreateBalls>().ResumeCreation();
-
+        GameObject.FindGameObjectWithTag("Quad").GetComponent<VideoScript>().Resume();
     }
 }

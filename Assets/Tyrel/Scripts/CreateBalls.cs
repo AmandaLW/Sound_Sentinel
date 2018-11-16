@@ -92,12 +92,10 @@ public class CreateBalls : MonoBehaviour {
     public void PauseCreation()
     {
         pause = true;
-        Debug.Log("Pause Ball Creation");
     }
 
     public void ResumeCreation()
     {
         pause = false;
-        Debug.Log("Resume Ball Creation");
     }
 }
