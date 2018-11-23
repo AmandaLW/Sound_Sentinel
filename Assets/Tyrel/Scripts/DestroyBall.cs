@@ -20,7 +20,7 @@ public class DestroyBall : MonoBehaviour {
 	void Update () {
         if (rb.position.x > window || rb.position.x < -window || rb.position.y > window || rb.position.y < -window || rb.position.z > window)
         {
-            GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<Score>().UpdateScore(gameObject.GetComponent<ColorChange>().GetColor());
+            GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<Score>().UpdateScore(gameObject.GetComponent<ColorChange>().GetColor()-1);
             //int score = gameObject.GetComponent<ColorChange>().GetColor();
             Destroy(gameObject);
         }
@@ -32,7 +32,7 @@ public class DestroyBall : MonoBehaviour {
                 temp.FailedCollision(speed);
                 //rb.Sleep();
             }
-            GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<Score>().UpdateScore(gameObject.GetComponent<ColorChange>().GetColor());
+            GameObject.FindGameObjectWithTag("ScoreBoard").GetComponent<Score>().UpdateScore(gameObject.GetComponent<ColorChange>().GetColor()-1);
             //int score = gameObject.GetComponent<ColorChange>().GetColor();
             Destroy(gameObject);
         }
