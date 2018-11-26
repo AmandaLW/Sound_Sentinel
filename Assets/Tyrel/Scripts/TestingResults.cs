@@ -34,15 +34,7 @@ public class TestingResults : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        time = time - Time.deltaTime;
-        if (time < 0)
-        {
-            string dateandtime = System.DateTime.Now.ToString("HH:mm:ss");
-            writer.WriteLine(dateandtime + "  Current Fail Speed: " + failedSpeed + "  Number of Failed Balls: " + failedBalls);
-            failedBalls = 0;
-            failedSpeed = 100;
-            time = 15;
-        }
+        
 	}
 
     public void FailedCollision(float speed)
@@ -51,8 +43,15 @@ public class TestingResults : MonoBehaviour {
         if (speed < failedSpeed)
         {
             failedSpeed = speed;
-            //time = 0;
-            //TestRecords("Shield Collision fail speed: " + failedSpeed, false);
+        }
+        time = time - Time.deltaTime;
+        if (time < 0)
+        {
+            string dateandtime = System.DateTime.Now.ToString("HH:mm:ss");
+            writer.WriteLine(dateandtime + "  Current Fail Speed: " + failedSpeed + "  Number of Failed Balls: " + failedBalls);
+            failedBalls = 0;
+            failedSpeed = 100;
+            time = 15;
         }
     }
 

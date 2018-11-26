@@ -114,14 +114,14 @@ public class MediaScript : MonoBehaviour
         if (multimedia[multimediaIndex].Contains(".mp4"))
         {
             //Debug.Log("This is an mp4");
-            PlayVideo();
             mediaType = "mp4";
+            PlayVideo();
         }
         else if (multimedia[multimediaIndex].Contains(".mp3"))
         {
             //Debug.Log("This is an mp3");
-            PlayMusic();
             mediaType = "mp3";
+            PlayMusic();
         }
         else
         {
@@ -134,11 +134,13 @@ public class MediaScript : MonoBehaviour
     public void Pause()
     {
         videoPlayer.Pause();
+        audioSource.Pause();
     }
 
     public void Resume()
     {
         videoPlayer.Play();
+        audioSource.UnPause();
     }
 
     //This function reports to the testing system when the game is quit
