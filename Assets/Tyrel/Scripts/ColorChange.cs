@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorChange : MonoBehaviour {
 
-    Color[] colors = { new Color(255, 0, 255), Color.blue, Color.cyan, Color.green, Color.yellow, new Color(255, 165, 0), Color.red, Color.black };
+    Color[] colors = { new Color(255, 0, 255), Color.blue, Color.cyan, Color.green, new Color(255, 165, 0), Color.red, Color.black };
     int count;
     float time = (float)0.5;
 
@@ -14,6 +14,7 @@ public class ColorChange : MonoBehaviour {
 	void Start () {
         count = 0;
         ballRenderer = gameObject.GetComponent<Renderer>();
+        ballRenderer.material.color = Color.yellow;
 	}
 	
 	// Update is called once per frame

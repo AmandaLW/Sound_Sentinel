@@ -25,6 +25,15 @@ public class BallCollision : MonoBehaviour {
         if(collision.gameObject.tag == "ball")
         {
             ballsmackin.UpdateScore(1);
+            Explode();
+            
         }
+    }
+
+    private void Explode()
+    {
+         var exp = GetComponent<ParticleSystem>();
+        exp.Play();
+        Destroy(gameObject, exp.duration);
     }
 }

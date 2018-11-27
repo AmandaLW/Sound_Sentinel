@@ -6,7 +6,7 @@
 Assets/AssetStoreTools*
 
 # Sound Sentinel Generated Files
-*.tst
+#*.tst
 
 # Visual Studio cache directory
 .vs/
