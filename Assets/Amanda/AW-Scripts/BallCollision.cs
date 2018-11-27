@@ -34,6 +34,6 @@ public class BallCollision : MonoBehaviour {
     {
          var exp = GetComponent<ParticleSystem>();
         exp.Play();
-       // Destroy(gameObject, exp.duration);
+        Destroy(gameObject, exp.duration);
     }
 }

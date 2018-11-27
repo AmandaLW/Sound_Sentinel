@@ -22,7 +22,7 @@ public class CreateBalls : MonoBehaviour {
     private const int MAX_y = 8;
     private const float MAX_targetx = (float)0.5;
     private const float MAX_targety = (float)0.25;
-    private const float MIN_frequency = (float)0.7;
+    private const float MIN_frequency = (float)0.01;
     private int MAX_Speed;
 
     private bool pause = false;

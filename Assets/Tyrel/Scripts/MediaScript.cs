@@ -54,7 +54,7 @@ public class MediaScript : MonoBehaviour
         //    Debug.Log(m);
 
         multimediaIndex = Random.Range(0, multimedia.Count - 1);
-        multimediaIndex = multimedia.Count - 2;
+        //multimediaIndex = multimedia.Count - 2;
 
         PlayNext();
     }
@@ -84,6 +84,9 @@ public class MediaScript : MonoBehaviour
         Debug.Log(System.DateTime.Now.ToString("HH:mm:ss") + " Play video");
         //Set display target to override current object material
         videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
+        //videoPlayer.targetTexture = gameObject.GetComponent<RenderTexture>();
+        //videoPlayer.targetMaterialRenderer = gameObject.GetComponent<Renderer>();
+        //videoPlayer.renderMode = VideoRenderMode.RenderTexture;
 
         //Disable Play on Awake for both Video and Audio
         videoPlayer.playOnAwake = false;
