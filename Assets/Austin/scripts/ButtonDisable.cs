@@ -6,7 +6,7 @@ public class ButtonDisable : MonoBehaviour {
     public string buttonTag;
     GameObject[] tempObject;
 
-    //shuts off buttons box colliders when the game is started again
+    //shuts off buttons box colliders 
     public void DisableButton()
     {
         tempObject = GameObject.FindGameObjectsWithTag(buttonTag);

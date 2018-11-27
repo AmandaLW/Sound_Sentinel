@@ -7,6 +7,7 @@ public class CanvasOff : MonoBehaviour {
     // Use this for initialization
     void Start() {
         canvasOff();
+        Debug.Log(VideoSingleton.Instance.VideoString);
     }
 
      public void canvasOff()
