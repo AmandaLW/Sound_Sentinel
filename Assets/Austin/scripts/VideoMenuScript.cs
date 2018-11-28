@@ -30,12 +30,12 @@ public class VideoMenuScript : MonoBehaviour {
         }
 
         //after all the buttons are created turn them off until use
-        GameObject[] tempObject = GameObject.FindGameObjectsWithTag(buttonTag);
+       /* GameObject[] tempObject = GameObject.FindGameObjectsWithTag(buttonTag);
         for (int x = 0; x < tempObject.Length; x++)
             {
                 tempObject[x].SetActive(false);
             }
-        
+        */
     }
 
 }
