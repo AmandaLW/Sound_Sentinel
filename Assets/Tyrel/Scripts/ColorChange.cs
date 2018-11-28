@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ColorChange : MonoBehaviour {
 
-    Color[] colors = { new Color(255, 0, 255), Color.blue, Color.cyan, Color.green, new Color(255, 165, 0), Color.red, Color.black };
+    Color[] colors = { Color.blue, Color.cyan, Color.green, new Color(255, 165, 0), Color.red, Color.black };
     int count;
     float time = (float)0.5;
 
@@ -27,8 +27,7 @@ public class ColorChange : MonoBehaviour {
         if (time < 0 && count < colors.Length)
         {
             ballRenderer.material.color = colors[count];
-            //if (count < colors.Length)
-                count++;
+            count++;
             time = (float)0.5;
         }
     }

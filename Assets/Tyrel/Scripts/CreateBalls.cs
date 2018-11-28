@@ -38,10 +38,6 @@ public class CreateBalls : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //Check score
-
-        //Have score determine if a new ball should be launched
-        //what algorithm could I use??
         if (pause == false)
         {
             Creation();
