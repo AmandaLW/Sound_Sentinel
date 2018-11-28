@@ -6,11 +6,9 @@ public class ButtonOnOff : MonoBehaviour {
     public string buttonTag;
     GameObject[] tempObject;
     
-    //shuts off buttons  
-    
+    //shuts off buttons with a certain tag so they don't interfere with other menus
     public void DisableButton(string buttonTag)
     {
-        
         tempObject = GameObject.FindGameObjectsWithTag(buttonTag); 
         for (int x = 0; x < tempObject.Length; x++)
         {

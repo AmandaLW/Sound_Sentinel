@@ -9,6 +9,7 @@ public class VideoMenuScript : MonoBehaviour {
     public Transform videoCanvas;
 	void Start ()
     {
+        //this is the folder the game looks at when making a list of video/music options
         string videoFolder = Application.dataPath + "/Resources/";
         //To add additional file types to the ingame list place them in this array.
         string[] fileTypes = {"*.mp4", "*.mp3" };
@@ -19,29 +20,27 @@ public class VideoMenuScript : MonoBehaviour {
         //Debug.Log(filePaths[0]);
         float yCoord = 1.5f;
         float zCoord = 2.5f;
+        //step through all specified file types
         for (int k = 0; k < fileTypes.Length; k++)
         {
+            //read all files of a type into an array
             string[] filePaths = Directory.GetFiles(videoFolder, fileTypes[k]);
+
+            //step through file of given type found in a file and create a button for each
             for (int x = 0; x < filePaths.Length; x++)
             {
+                //move button down so they don't overlap
                 yCoord = yCoord - 0.07f;
-                //zCoord = zCoord + (x * 0.1f);
+                //create new button as a child of the video menu canvas
                 Transform buttonClone = Instantiate(videoButton, new Vector3(0, yCoord, zCoord), Quaternion.identity, videoCanvas);
                 string fileName = filePaths[x].Remove(0, pathLength);
                 buttonClone.GetComponentInChildren<Text>().text = fileName;
                 buttonClone.tag = buttonTag;
+                //send video's file path to button in case that video is selected
                 buttonClone.SendMessage("SetFilePath", filePaths[x]);
-                Debug.Log(fileName);
+                //Debug.Log(fileName);
             }
         }
-
-        //after all the buttons are created turn them off until use
-       /* GameObject[] tempObject = GameObject.FindGameObjectsWithTag(buttonTag);
-        for (int x = 0; x < tempObject.Length; x++)
-            {
-                tempObject[x].SetActive(false);
-            }
-        */
     }
 
 }

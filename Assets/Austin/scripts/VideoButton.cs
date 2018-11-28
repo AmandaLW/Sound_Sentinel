@@ -5,17 +5,16 @@ using UnityEngine;
 public class VideoButton : MonoBehaviour {
     public string filePath;
 
-
+    //will accept message sent from VideoMenuScript with corresponding file path
     public void SetFilePath(string path)
     {
         filePath = path;
         //Debug.Log("file path set");
     }
+    //If this button is pressed the file path will be placed in the singleton so it will be passed to the next scene
 	public void PassFilePath()
     {
         VideoSingleton.Instance.VideoString = filePath;
         Debug.Log(VideoSingleton.Instance.VideoString);
-      //MyScript temp = GameObject.GetComponent<SceneChange>;
-      //temp.SceneChanger("Sound_Sentinel");
     }
 }
