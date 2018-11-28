@@ -5,6 +5,12 @@ using UnityEngine;
 public class VideoButton : MonoBehaviour {
     public string filePath;
 
+
+    public void SetFilePath(string path)
+    {
+        filePath = path;
+        //Debug.Log("file path set");
+    }
 	public void PassFilePath()
     {
         VideoSingleton.Instance.VideoString = filePath;

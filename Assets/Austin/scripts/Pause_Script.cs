@@ -12,6 +12,7 @@ public class Pause_Script : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        Debug.Log(VideoSingleton.Instance.VideoString);
         canvasOff();
         tempObjectTwo = GameObject.FindGameObjectsWithTag("Button");
         Debug.Log(tempObjectTwo.Length);

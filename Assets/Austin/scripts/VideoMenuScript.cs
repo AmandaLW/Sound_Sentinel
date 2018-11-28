@@ -7,7 +7,8 @@ using System.IO;
 public class VideoMenuScript : MonoBehaviour {
     public Transform videoButton;
     public Transform videoCanvas;
-	void Start () {
+	void Start ()
+    {
         string videoFolder = Application.dataPath + "/Tyrel/Videos/";
         int pathLength = (videoFolder.Length);
         string buttonTag = "vButton";
@@ -24,6 +25,7 @@ public class VideoMenuScript : MonoBehaviour {
             string fileName = filePaths[x].Remove(0, pathLength);
             buttonClone.GetComponentInChildren<Text>().text = fileName;
             buttonClone.tag = buttonTag;
+            buttonClone.SendMessage("SetFilePath", filePaths[x]);
             Debug.Log(fileName);
         }
 
