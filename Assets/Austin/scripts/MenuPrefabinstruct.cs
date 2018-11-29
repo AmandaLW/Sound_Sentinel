@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 //this class does nothing but shows you how to use menu prefabs
+public class MenuPrefabinstruct : MonoBehaviour {
     //To use a prefab in a script make a varible to assign it to
+    //While your at it make one for the canvas for your new menu
+
+    //we will use this to create copies from using instantiate
+    //public Transform buttonCopy;
+    //public Transform buttonCanvas;
+    //drag the prefab and canvas to these variables in the inspector
 
     //here we use instantiate to make a new copy of our prefab as a game object and assign it to buttonClone so we can set values
     //parameters for Istantiate in this case are 
