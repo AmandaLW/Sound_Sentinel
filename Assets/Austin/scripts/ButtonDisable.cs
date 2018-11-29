@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonOnOff : MonoBehaviour {
+public class ButtonDisable : MonoBehaviour {
     public string buttonTag;
     GameObject[] tempObject;
     

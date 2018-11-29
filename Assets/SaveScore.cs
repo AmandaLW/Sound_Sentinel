@@ -10,9 +10,6 @@ public class SaveScore : MonoBehaviour
     [MenuItem("Tools/Write file")]
     public void ScoreSaver()
     {
-         
-    
-    
         string path = (Application.dataPath + "/Austin/Score.txt");
 
         //Write some text to the test.txt file
