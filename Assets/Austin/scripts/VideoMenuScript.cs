@@ -10,7 +10,7 @@ public class VideoMenuScript : MonoBehaviour {
 	void Start ()
     {
         //this is the folder the game looks at when making a list of video/music options
-        string videoFolder = Application.dataPath + "/Resources/";
+        string videoFolder = Application.dataPath + "/Resources/Tyrel/video/";
         //To add additional file types to the ingame list place them in this array.
         string[] fileTypes = {"*.mp4", "*.mp3" };
         int pathLength = (videoFolder.Length);
@@ -19,7 +19,7 @@ public class VideoMenuScript : MonoBehaviour {
       
         //Debug.Log(filePaths[0]);
         float yCoord = 2f;
-        float zCoord = 3f;
+        float zCoord = 1.5f;
         //step through all specified file types
         for (int k = 0; k < fileTypes.Length; k++)
         {

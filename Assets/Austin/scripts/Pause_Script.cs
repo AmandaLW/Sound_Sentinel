@@ -13,7 +13,9 @@ public class Pause_Script : MonoBehaviour {
     // Use this for initialization
     //When scene loads turn off pause menu buttons
     void Start()
-    {       
+    {
+        tempObject = GameObject.FindGameObjectWithTag("shield");
+        tempObject.SetActive(false);
         tempObjectTwo = GameObject.FindGameObjectsWithTag("Button");
         for (int x = 0; x < tempObjectTwo.Length; x++)
         {
