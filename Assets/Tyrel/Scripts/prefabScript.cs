@@ -24,12 +24,12 @@ public class prefabScript : MonoBehaviour {
         int pos_y;
         for (int i = 0; i < creationNumber; i++)
         {
-            pos_x = -1;
+            pos_x = -10;
             pos_y = 0;
             for(int j=0; j < prefabItems.Length; j++)
             {
                 Instantiate(prefabItems[j], new Vector3(pos_x, pos_y, 5), Quaternion.identity);
-                pos_x += 2;
+                pos_x += 5;
             }
             //pos_x *= -1;
             //pos_y *= -1;

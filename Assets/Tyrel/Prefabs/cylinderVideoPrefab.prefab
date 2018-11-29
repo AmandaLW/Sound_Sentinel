@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 136017978053965116}
   - component: {fileID: 54421820977845040}
   - component: {fileID: 114960847386716750}
-  - component: {fileID: 114650716455398692}
+  - component: {fileID: 114383937079051922}
   m_Layer: 0
   m_Name: cylinderVideoPrefab
   m_TagString: Untagged
@@ -102,7 +102,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114650716455398692
+--- !u!114 &114383937079051922
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1087304733127652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49c34946bfbacb24b9a4c2898f04765e, type: 3}
+  m_Script: {fileID: 11500000, guid: b714f2d6bce23104a8a8ac0f8be07518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114960847386716750

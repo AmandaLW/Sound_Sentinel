@@ -7,42 +7,48 @@ using UnityEngine.UI;
 public class MediaScript : MonoBehaviour
 {
     //Define variables to hold the videoplayer
-    private VideoPlayer videoPlayer;
+    protected VideoPlayer videoPlayer;
 
     //Define a variable to hold the audioplayer
-    private AudioSource musicSource;
+    protected AudioSource musicSource;
 
     //Define variables to hold the path of the files that list the viable items to be played
-    private string m_path;
+    protected string m_path;
 
     //Define a list that will hold the media path+filenames to be loaded
-    private List<string> multimedia = new List<string>();
-    private string mediaType;
-    private int multimediaIndex;
+    protected List<string> multimedia = new List<string>();
+    protected int multimediaIndex;
 
-    private float time = 1;
-    //private float timeRemaining;
+    //Use as a file type marker
+    protected string mediaType;
 
-    private bool musicPaused = false;
+    //Initialize the time variable for the update function
+    protected float time = 1;
+
+    //Used to determine if the music is paused instead of not playing
+    protected bool musicPaused = false;
 
     // Use this for initialization
-    void Start()
+    public void Start()
+    {
+        Init();
+    }
+
+    private void Init()
     {
         //Add VideoPlayer to the GameObject
         videoPlayer = gameObject.AddComponent<VideoPlayer>();
 
         //Add AudioSource to the GameObject
-        //audioSource = gameObject.AddComponent<AudioSource>();
         musicSource = gameObject.AddComponent<AudioSource>();
 
         //Initialize the path
         //Application.dataPath returns the Assets folder when being run in Unity
-        m_path = Application.dataPath + "/Resources/";
-
-
+        m_path = Application.dataPath + "/Resources/Tyrel/";
+        
         //Read all viable media types into a list
-        multimedia.AddRange(System.IO.Directory.GetFiles(m_path, "*.mp4"));
-        multimedia.AddRange(System.IO.Directory.GetFiles(m_path, "*.mp3"));
+        multimedia.AddRange(System.IO.Directory.GetFiles(m_path + "Video/", "*.mp4"));
+        multimedia.AddRange(System.IO.Directory.GetFiles(m_path + "Music/", "*.mp3"));
 
         //foreach (string m in multimedia)
         //    Debug.Log(m);
@@ -54,8 +60,10 @@ public class MediaScript : MonoBehaviour
     }
 
     
-    void Update()
+    private void Update()
     {
+        //Use update to check if the video or music is done playing
+        //Only check once a second
         time = time - Time.deltaTime;
         if (time < 0)
         {
@@ -73,14 +81,14 @@ public class MediaScript : MonoBehaviour
         }
     }
 
-    private void PlayVideo()
+    virtual public void PlayVideo()
     {
         //Set display target to override current object material
-        videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
+        //videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
         //videoPlayer.targetTexture = gameObject.GetComponent<RenderTexture>();
         //videoPlayer.targetMaterialRenderer = gameObject.GetComponent<Renderer>();
-        //videoPlayer.renderMode = VideoRenderMode.RenderTexture;
-        //videoPlayer.targetTexture = GetComponent<MeshRenderer>().material;
+        videoPlayer.renderMode = VideoRenderMode.RenderTexture;
+        videoPlayer.targetTexture = Resources.Load<RenderTexture>("Tyrel/Textures/VideoMaterialTexture");
 
         //Disable Play on Awake for both Video and Audio
         videoPlayer.playOnAwake = false;
@@ -100,32 +108,30 @@ public class MediaScript : MonoBehaviour
 
     private void PlayMusic()
     {
-        Debug.Log(System.DateTime.Now.ToString("HH:mm:ss") + " Play music");
         //Load file as audio clip
         musicSource.clip = Resources.Load<AudioClip>(System.IO.Path.GetFileNameWithoutExtension(multimedia[multimediaIndex]));
-
-        //Debug.Log((audioSource.clip == null) ? "clip is null" : "clip is not null");
        
         //Play song
         musicSource.Play();
+
+        //Add the call to visualization function for the song here
     }
 
     private void PlayNext()
     {
+        //Call function to play MP4
         if (multimedia[multimediaIndex].Contains(".mp4"))
         {
-            Debug.Log(System.DateTime.Now.ToString("HH:mm:ss") + "-  This is an mp4");
-            Debug.Log(multimedia[multimediaIndex]);
             mediaType = "mp4";
             PlayVideo();
         }
+        //Call the function to play MP3
         else if (multimedia[multimediaIndex].Contains(".mp3"))
         {
-            Debug.Log(System.DateTime.Now.ToString("HH:mm:ss") + "-  This is an mp3");
-            Debug.Log(multimedia[multimediaIndex]);
             mediaType = "mp3";
             PlayMusic();
         }
+        //If the media type is incorrect then it will send a debug log and play the next song
         else
         {
             Debug.Log(System.DateTime.Now.ToString("HH:mm:ss") + "-  Invalid media type.");
@@ -134,13 +140,14 @@ public class MediaScript : MonoBehaviour
         }
     }
 
+    //This function is used to pause the video and music players
     public void Pause()
     {
         videoPlayer.Pause();
         musicSource.Pause();
         musicPaused = true;
     }
-
+    //This function is used to resume the video and music players
     public void Resume()
     {
         videoPlayer.Play();
@@ -151,7 +158,9 @@ public class MediaScript : MonoBehaviour
     //This function reports to the testing system when the game is quit
     private void OnApplicationQuit()
     {
-        TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
-        temp.RecordTests("MediaScript", true);
+        //TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
+        //temp.RecordTests("MediaScript", true);
+        TestingPlatform.Instance.RecordTests(gameObject.name, true);
+        //Resources.UnloadAsset(videoPlayer);
     }
 }

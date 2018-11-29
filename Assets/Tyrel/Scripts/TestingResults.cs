@@ -3,27 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class TestingResults : TestingPlatform {
+public class TestingResults : MonoBehaviour
+{
+    public TestingPlatform temp = TestingPlatform.Instance;
 
-    private int failedBalls = 0;
-    private float failedSpeed = 100;
-    private float time = 15;
-    
+    // Use this for initializing the test file in the Singleton TestingPlatform
     private string testOutputFile;
-    StreamWriter writer;
-
-	// Use this for initialization
-	void Start () {
-        TestingResults();
-    }
-	
-	// Update is called once per frame
-	void Update () {
-        
-	}
-
-    void CreateFile()
-    {
+    void Start () {
         string dateandtime = System.DateTime.Now.ToString("yyyy MMM dd  HH.mm.ss");
         string devFolder = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         if (devFolder.Contains("Tyrel"))
@@ -39,9 +25,13 @@ public class TestingResults : TestingPlatform {
 
         testOutputFile = "tst/" + devFolder + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + "_" + dateandtime + ".tst";
         var file = File.Open(testOutputFile, FileMode.OpenOrCreate, FileAccess.Write);
-        writer = new StreamWriter(file);
+        temp.SetWriter(new StreamWriter(file));
     }
 
+    // Use this for testing what speed the balls pass through the shield
+    private int failedBalls = 0;
+    private float failedSpeed = 100;
+    private float time = 15;
     public void FailedCollision(float speed)
     {
         failedBalls += 1;
@@ -53,24 +43,11 @@ public class TestingResults : TestingPlatform {
         if (time < 0)
         {
             string dateandtime = System.DateTime.Now.ToString("HH:mm:ss");
-            writer.WriteLine(dateandtime + "  Current Fail Speed: " + failedSpeed + "  Number of Failed Balls: " + failedBalls);
+            temp.TestMessage(dateandtime + "  Current Fail Speed: " + failedSpeed + "  Number of Failed Balls: " + failedBalls);
             failedBalls = 0;
             failedSpeed = 100;
             time = 15;
         }
     }
 
-    private void OnDestroy()
-    {
-        writer.Close();
-    }
-
-    public void RecordTests(string test, bool pass = false)
-    {
-        var dateandtime = System.DateTime.Now.ToString("HH:mm:ss");
-        if(pass)
-            writer.WriteLine(dateandtime + " " + test + " " + "PASS");
-        else
-            writer.WriteLine(dateandtime + " " + test + " " + "FAIL");
-    }
 }
