@@ -83,11 +83,10 @@ public class MediaScript : MonoBehaviour
     {
         Debug.Log(System.DateTime.Now.ToString("HH:mm:ss") + " Play video");
         //Set display target to override current object material
-        //videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
+        videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
         //videoPlayer.targetTexture = gameObject.GetComponent<RenderTexture>();
         //videoPlayer.targetMaterialRenderer = gameObject.GetComponent<Renderer>();
-        videoPlayer.renderMode = VideoRenderMode.RenderTexture;
-        videoPlayer.targetTexture = GetComponent<MeshRenderer>().material;
+        //videoPlayer.renderMode = VideoRenderMode.RenderTexture;
 
         //Disable Play on Awake for both Video and Audio
         videoPlayer.playOnAwake = false;
