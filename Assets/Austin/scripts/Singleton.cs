@@ -2,11 +2,7 @@
 
 //Implemented from Unity wiki on singleton has extra code from regular singulton to prevent
 //ghost objects from appearing in the editor
-
-
-// Inherit from this base class to create a singleton.
-// e.g. public class MyClassName : Singleton<MyClassName> {}
-// </summary>
+//This can be used to make any number of singleton classes by inheriting this class
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
     // Check to see if we're about to be destroyed.
