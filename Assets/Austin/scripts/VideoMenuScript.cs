@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-
+//Generates the list of buttons to select video from 
 public class VideoMenuScript : MonoBehaviour {
     public Transform videoButton;
     public Transform videoCanvas;
@@ -18,8 +18,8 @@ public class VideoMenuScript : MonoBehaviour {
         //Debug.Log(pathLength);
       
         //Debug.Log(filePaths[0]);
-        float yCoord = 1.5f;
-        float zCoord = 2.5f;
+        float yCoord = 2f;
+        float zCoord = 3f;
         //step through all specified file types
         for (int k = 0; k < fileTypes.Length; k++)
         {
@@ -30,7 +30,7 @@ public class VideoMenuScript : MonoBehaviour {
             for (int x = 0; x < filePaths.Length; x++)
             {
                 //move button down so they don't overlap
-                yCoord = yCoord - 0.07f;
+                yCoord = yCoord - 0.09f;
                 //create new button as a child of the video menu canvas
                 Transform buttonClone = Instantiate(videoButton, new Vector3(0, yCoord, zCoord), Quaternion.identity, videoCanvas);
                 string fileName = filePaths[x].Remove(0, pathLength);
