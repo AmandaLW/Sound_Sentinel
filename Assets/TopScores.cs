@@ -20,28 +20,20 @@ public class TopScores : MonoBehaviour {
         {
             //string line = scoresFromFile;
             int.TryParse(scoresFromFile[x], out scores[x]);
+            Debug.Log("scores converted to ints");
         }
         Array.Sort(scores);
-        float yCoord = 3f;
+        float yCoord = 2f;
         float zCoord = 2.5f;
         for (int k = 0; k < scores.Length; k++)
         {
+            Debug.Log("Displaying scores");
             string textString = scores[k].ToString();
             Transform displayedScore = Instantiate(textBox, new Vector3(0, yCoord, zCoord), Quaternion.identity, scoreCanvas);
             textBox.GetComponentInChildren<Text>().text = textString;
-            textBox.GetComponentInChildren<Text>().fontSize = 40;
-            yCoord -= 0.7f;
+            textBox.GetComponentInChildren<Text>().fontSize = 20;
+            yCoord -= 0.07f;
         }
         //Reader.Close();
-    }
-
-    void ReadScores()
-    {
-
-    }
-
-    void Sort()
-    {
-
     }
 }
