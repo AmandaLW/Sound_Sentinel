@@ -9,33 +9,38 @@ public class VideoMenuScript : MonoBehaviour {
     public Transform videoCanvas;
 	void Start ()
     {
-        string videoFolder = Application.dataPath + "/Tyrel/Videos/";
+        //this is the folder the game looks at when making a list of video/music options
+        string videoFolder = Application.dataPath + "/Resources/";
+        //To add additional file types to the ingame list place them in this array.
+        string[] fileTypes = {"*.mp4", "*.mp3" };
         int pathLength = (videoFolder.Length);
         string buttonTag = "vButton";
-        Debug.Log(pathLength);
-        string[] filePaths = Directory.GetFiles(videoFolder, "*.mp4");
-        Debug.Log(filePaths[0]);
-        for (int x = 0; x < filePaths.Length; x++)
+        //Debug.Log(pathLength);
+      
+        //Debug.Log(filePaths[0]);
+        float yCoord = 1.5f;
+        float zCoord = 2.5f;
+        //step through all specified file types
+        for (int k = 0; k < fileTypes.Length; k++)
         {
-            float yCoord = 1.5f;
-            float zCoord = 2.5f;
-            yCoord = yCoord + (x * 0.07f);
-            //zCoord = zCoord + (x * 0.1f);
-            Transform buttonClone = Instantiate(videoButton, new Vector3(0, yCoord, zCoord), Quaternion.identity, videoCanvas);
-            string fileName = filePaths[x].Remove(0, pathLength);
-            buttonClone.GetComponentInChildren<Text>().text = fileName;
-            buttonClone.tag = buttonTag;
-            buttonClone.SendMessage("SetFilePath", filePaths[x]);
-            Debug.Log(fileName);
-        }
+            //read all files of a type into an array
+            string[] filePaths = Directory.GetFiles(videoFolder, fileTypes[k]);
 
-        //after all the buttons are created turn them off until use
-        GameObject[] tempObject = GameObject.FindGameObjectsWithTag(buttonTag);
-        for (int x = 0; x < tempObject.Length; x++)
+            //step through file of given type found in a file and create a button for each
+            for (int x = 0; x < filePaths.Length; x++)
             {
-                tempObject[x].SetActive(false);
+                //move button down so they don't overlap
+                yCoord = yCoord - 0.07f;
+                //create new button as a child of the video menu canvas
+                Transform buttonClone = Instantiate(videoButton, new Vector3(0, yCoord, zCoord), Quaternion.identity, videoCanvas);
+                string fileName = filePaths[x].Remove(0, pathLength);
+                buttonClone.GetComponentInChildren<Text>().text = fileName;
+                buttonClone.tag = buttonTag;
+                //send video's file path to button in case that video is selected
+                buttonClone.SendMessage("SetFilePath", filePaths[x]);
+                //Debug.Log(fileName);
             }
-        
+        }
     }
 
 }

@@ -10,12 +10,11 @@ public class Pause_Script : MonoBehaviour {
     GameObject tempObject;
     GameObject[] tempObjectTwo;
     // Use this for initialization
+    //When scene loads turn off pause menu and pause menu buttons
     void Start()
     {
-        Debug.Log(VideoSingleton.Instance.VideoString);
         canvasOff();
         tempObjectTwo = GameObject.FindGameObjectsWithTag("Button");
-        Debug.Log(tempObjectTwo.Length);
         for (int x = 0; x < tempObjectTwo.Length; x++)
         {
           tempObjectTwo[x].SetActive(false);
@@ -28,9 +27,9 @@ public class Pause_Script : MonoBehaviour {
         canvas = canvas.GetComponent<Canvas>();
         canvas.enabled = false;
     }
+    //watch for either pause button to be pressed and open pause menu when it does
     void Update()
     {
-        //Debug.Log(keyboardPauseButton);
         if (Input.GetKey(vivePauseButton) || Input.GetKey(keyboardPauseButton))
         {
             canvas.enabled = true;

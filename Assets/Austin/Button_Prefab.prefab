@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114172201564973388}
   - component: {fileID: 114994216225501410}
   - component: {fileID: 114660791517125234}
+  - component: {fileID: 65853042895251246}
   m_Layer: 5
   m_Name: Button_Prefab
   m_TagString: Untagged
@@ -48,6 +49,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &65853042895251246
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1644477587808226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 160, y: 30, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114015428553260348
 MonoBehaviour:
   m_ObjectHideFlags: 1
