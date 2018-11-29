@@ -52,6 +52,7 @@ public class CreateBalls : MonoBehaviour {
 
         if (timer <= 0f)
         {
+            //Using prototype pattern use the prefab as my prototype to create all future classes of this prototype
             GameObject temp = Instantiate(ball, new Vector3(Random.Range(-x, x), Random.Range(-y, y), z), Quaternion.identity) as GameObject;
 
             target = new Vector3(Random.Range(-target_x, target_x), Random.Range(-target_y + (float)1.5, target_y + (float)1.5), 0);
@@ -82,7 +83,7 @@ public class CreateBalls : MonoBehaviour {
     private void OnApplicationQuit()
     {
         TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
-        temp.TestRecords("CreateBalls", true);
+        temp.RecordTests("CreateBalls", true);
     }
 
     public void PauseCreation()

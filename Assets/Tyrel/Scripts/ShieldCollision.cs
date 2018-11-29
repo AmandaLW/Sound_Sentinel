@@ -27,6 +27,6 @@ public class ShieldCollision : MonoBehaviour {
 
     private void OnApplicationQuit()
     {
-        GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>().TestRecords("ShieldCollision", true);
+        GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>().RecordTests("ShieldCollision", true);
     }
 }

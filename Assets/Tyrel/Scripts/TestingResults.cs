@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class TestingResults : MonoBehaviour {
+public class TestingResults : TestingPlatform {
 
     private int failedBalls = 0;
     private float failedSpeed = 100;
@@ -14,13 +14,23 @@ public class TestingResults : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        TestingResults();
+    }
+	
+	// Update is called once per frame
+	void Update () {
+        
+	}
+
+    void CreateFile()
+    {
         string dateandtime = System.DateTime.Now.ToString("yyyy MMM dd  HH.mm.ss");
         string devFolder = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         if (devFolder.Contains("Tyrel"))
             devFolder = "Tyrel/";
         else if (devFolder.Contains("Amanda"))
             devFolder = "Amanda/";
-        else if (devFolder.Contains("Austin"))
+        else if (devFolder.Contains("Austin") || devFolder.Contains("Menu"))
             devFolder = "Austin/";
         else if (devFolder.Contains("Tristan"))
             devFolder = "Tristan/";
@@ -31,11 +41,6 @@ public class TestingResults : MonoBehaviour {
         var file = File.Open(testOutputFile, FileMode.OpenOrCreate, FileAccess.Write);
         writer = new StreamWriter(file);
     }
-	
-	// Update is called once per frame
-	void Update () {
-        
-	}
 
     public void FailedCollision(float speed)
     {
@@ -60,7 +65,7 @@ public class TestingResults : MonoBehaviour {
         writer.Close();
     }
 
-    public void TestRecords(string test, bool pass = false)
+    public void RecordTests(string test, bool pass = false)
     {
         var dateandtime = System.DateTime.Now.ToString("HH:mm:ss");
         if(pass)

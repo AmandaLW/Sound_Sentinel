@@ -46,6 +46,6 @@ public class DestroyBall : MonoBehaviour {
     /*private void OnApplicationQuit()
     {
         TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
-        temp.TestRecords("DestroyBall", true);
+        temp.RecordTests("DestroyBall", true);
     }*/
 }

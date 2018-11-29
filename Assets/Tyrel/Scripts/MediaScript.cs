@@ -6,20 +6,14 @@ using UnityEngine.UI;
 
 public class MediaScript : MonoBehaviour
 {
-    //Define a variable that will hold the location of the video you want to play
-    //private VideoClip videoToPlay;
-
     //Define variables to hold the videoplayer
     private VideoPlayer videoPlayer;
-    //private VideoSource videoSource;
 
     //Define a variable to hold the audioplayer
-    //private AudioSource audioSource;
     private AudioSource musicSource;
 
     //Define variables to hold the path of the files that list the viable items to be played
     private string m_path;
-    //string videoList;
 
     //Define a list that will hold the media path+filenames to be loaded
     private List<string> multimedia = new List<string>();
@@ -81,16 +75,15 @@ public class MediaScript : MonoBehaviour
 
     private void PlayVideo()
     {
-        Debug.Log(System.DateTime.Now.ToString("HH:mm:ss") + " Play video");
         //Set display target to override current object material
         videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
         //videoPlayer.targetTexture = gameObject.GetComponent<RenderTexture>();
         //videoPlayer.targetMaterialRenderer = gameObject.GetComponent<Renderer>();
         //videoPlayer.renderMode = VideoRenderMode.RenderTexture;
+        //videoPlayer.targetTexture = GetComponent<MeshRenderer>().material;
 
         //Disable Play on Awake for both Video and Audio
         videoPlayer.playOnAwake = false;
-        //audioSource.playOnAwake = false;
 
         //We want to play from URL or path names
         videoPlayer.source = VideoSource.Url;
@@ -101,16 +94,8 @@ public class MediaScript : MonoBehaviour
         //Set Audio Output to AudioSource
         videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
 
-        //Assign the Audio from Video to AudioSource to be played
-        //videoPlayer.EnableAudioTrack(0, true);
-        //videoPlayer.SetTargetAudioSource(0, audioSource);
-
-        //videoPlayer.isLooping = true;
         //Play Video
         videoPlayer.Play();
-
-        //Play Sound
-        //audioSource.Play();
     }
 
     private void PlayMusic()
@@ -167,6 +152,6 @@ public class MediaScript : MonoBehaviour
     private void OnApplicationQuit()
     {
         TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
-        temp.TestRecords("MediaScript", true);
+        temp.RecordTests("MediaScript", true);
     }
 }
