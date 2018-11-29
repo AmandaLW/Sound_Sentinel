@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
-
+//Generates the list of buttons to select video from 
 public class VideoMenuScript : MonoBehaviour {
     public Transform videoButton;
     public Transform videoCanvas;

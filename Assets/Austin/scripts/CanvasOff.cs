@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 public class CanvasOff : MonoBehaviour {
-        
+    //script disables canvas on load
+
+    //drag canvas to disable to this variable in the inspector
     public Canvas canvas;
     // Use this for initialization
     void Start() {
         canvasOff();
-        //Debug.Log(VideoSingleton.Instance.VideoString);
     }
 
      public void canvasOff()
