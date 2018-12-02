@@ -13,25 +13,36 @@ public class TopScores : MonoBehaviour {
         //read in scores from file
         string path = (Application.dataPath + "/Austin/Score.txt");
         //StreamReader Reader = new StreamReader(path);
-        string[] scoresFromFile = File.ReadAllLines(path);
-        int fileLength = scoresFromFile.Length;
-        int[] scores = new int[fileLength];
+        string[] scoresandNames = File.ReadAllLines(path);
+        int fileLength = scoresandNames.Length;
+        string[] scoresFromFile = new string[(fileLength / 2)];
+        string[] namesFromFile = new string[(fileLength / 2)];
 
-        for (int x = 0; x < fileLength; x++)
+        //seperate names and scores
+        for(int x = 0; x < (scoresandNames.Length / 2); x++)
+        {
+            int arrayIndex = x * 2;
+            namesFromFile[x] = scoresandNames[arrayIndex];
+            scoresFromFile[x] = scoresandNames[(arrayIndex + 1)];
+        }
+
+       
+        int[] scores = new int[(fileLength/ 2)];
+        for (int x = 0; x < (fileLength / 2); x++)
         {
             //string line = scoresFromFile;
             int.TryParse(scoresFromFile[x], out scores[x]);
             //Debug.Log("scores converted to ints");
         }
         //sorts array so we can display top 10
-        Array.Sort(scores);
+        SortScores(ref namesFromFile, ref scores);
         float yCoord = 2f;
         float zCoord = 2.5f;
         //run through top 10 scores making text object for each
         for (int k = 0; k < 10; k++)
         {
-            string textString = scores[(scores.Length - (1 + k))].ToString();
-            //Debug.Log(textString);
+            string textString = (namesFromFile[((fileLength / 2) - (1 + k))] + " " + scores[((fileLength / 2) - (1 + k))].ToString());
+            Debug.Log(textString);
             Transform displayedScore = Instantiate(textBox, new Vector3(0, yCoord, zCoord), Quaternion.identity, scoreCanvas);
             //text properties are set and can be changed easily
             displayedScore.GetComponentInChildren<Text>().text = textString;
@@ -40,5 +51,36 @@ public class TopScores : MonoBehaviour {
         }
         
         //Reader.Close();
+    }
+
+    void SortScores(ref string[] names, ref int[] scores)
+    {
+        int changeMade = 0;
+        int e;
+        int t;
+        string r;
+        string y;
+        do
+        {
+            changeMade = 0;
+            for (int i = 0; i < (scores.Length - 1); i++)
+            {
+                e = scores[i];
+                t = scores[i + 1];
+                r = names[i];
+                y = names[i + 1];
+                if(e > t)
+                {
+                    Debug.Log(("swapping" + y + " " + t + " with " + r + " " + e));
+                    scores[i] = t;
+                    scores[i + 1] = e;
+                    names[i] = y;
+                    names[i + 1] = r;
+                    changeMade = 1;
+                }
+            }
+
+
+        } while (changeMade == 1);
     }
 }

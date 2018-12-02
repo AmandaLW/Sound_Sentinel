@@ -7,6 +7,7 @@ using System.IO;
 public class SaveScore : MonoBehaviour
 {
     private int score = 0;
+    private string playerName = "pizza";
     [MenuItem("Tools/Write file")]
     public void ScoreSaver()
     {
@@ -15,6 +16,7 @@ public class SaveScore : MonoBehaviour
 
         //Write score to file
         StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(playerName);
         writer.WriteLine(score);
         writer.Close();
 
