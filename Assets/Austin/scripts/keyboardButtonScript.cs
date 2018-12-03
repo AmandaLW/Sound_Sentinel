@@ -20,7 +20,8 @@ public class keyboardButtonScript : MonoBehaviour {
     {
         if (VideoSingleton.Instance.playerName.Length > 0)
         {
-            VideoSingleton.Instance.playerName.Remove(VideoSingleton.Instance.playerName.Length - 1);
+           string backOne = VideoSingleton.Instance.playerName.Remove(VideoSingleton.Instance.playerName.Length - 1);
+            VideoSingleton.Instance.playerName = backOne;
         }
     }
 }
