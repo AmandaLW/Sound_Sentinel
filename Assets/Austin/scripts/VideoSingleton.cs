@@ -6,7 +6,7 @@ public class VideoSingleton : Singleton<VideoSingleton> {
 
     // Prevent non-singleton constructor use.
     protected VideoSingleton() { }
-
+    public string playerName = "";
     public string VideoString = "random";
 
 }

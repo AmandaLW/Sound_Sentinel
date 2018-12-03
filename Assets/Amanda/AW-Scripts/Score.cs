@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +30,19 @@ public class Score : MonoBehaviour
     {
         // scoreText.text = "Score: " + score;
         score += balls;
+    }
+
+    private void OnDestroy()
+    {
+        string playerName;
+        //this is where the score will be saved
+        string path = (Application.dataPath + "/Austin/Score.txt");
+        playerName = VideoSingleton.Instance.playerName;
+        //Write score to file
+        StreamWriter writer = new StreamWriter(path, true);
+        writer.WriteLine(playerName);
+        writer.WriteLine(score);
+        writer.Close();
     }
 
 }
