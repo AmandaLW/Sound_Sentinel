@@ -34,10 +34,13 @@ public class Score : MonoBehaviour
 
     private void OnDestroy()
     {
-        string playerName;
+        string playerName = "pizza";
         //this is where the score will be saved
         string path = (Application.dataPath + "/Austin/Score.txt");
-        playerName = VideoSingleton.Instance.playerName;
+        if (VideoSingleton.Instance.playerName.Length > 0)
+        {
+            playerName = VideoSingleton.Instance.playerName;
+        }
         //Write score to file
         StreamWriter writer = new StreamWriter(path, true);
         writer.WriteLine(playerName);

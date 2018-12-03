@@ -8,7 +8,7 @@ public class keyboardButtonScript : MonoBehaviour {
     {
         keyboardLetter = letter;
     }
-   
+
     public void addLetterToName()
     {
         if (VideoSingleton.Instance.playerName.Length < 12)
@@ -20,8 +20,10 @@ public class keyboardButtonScript : MonoBehaviour {
     {
         if (VideoSingleton.Instance.playerName.Length > 0)
         {
-           string backOne = VideoSingleton.Instance.playerName.Remove(VideoSingleton.Instance.playerName.Length - 1);
+            string backOne = VideoSingleton.Instance.playerName.Remove(VideoSingleton.Instance.playerName.Length - 1);
             VideoSingleton.Instance.playerName = backOne;
         }
-    }
+    }   
+
+        
 }
