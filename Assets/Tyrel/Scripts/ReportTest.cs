@@ -18,7 +18,7 @@ public class ReportTest : MonoBehaviour {
     {
         TestingResults tests = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
 
-        tests.temp.RecordTests(gameObject.name, true);
+        tests.tests.RecordTests(gameObject.name, true);
 
         //TestingPlatform.Instance.RecordTests(gameObject.name, true);
 

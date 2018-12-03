@@ -49,30 +49,30 @@ public class TestingPlatform {
         testOutputFile = "tst/" + devFolder + UnityEngine.SceneManagement.SceneManager.GetActiveScene().name + "_" + dateandtime + ".tst";
         var file = File.Open(testOutputFile, FileMode.OpenOrCreate, FileAccess.Write);
         //temp.SetWriter(new StreamWriter(file));
-        writer = new StreamWriter(file);
+        TestingPlatformInstance.writer = new StreamWriter(file);
     }
 
     public void RecordTests(string test, bool pass = false)
     {
         var dateandtime = System.DateTime.Now.ToString("HH:mm:ss");
         if (pass)
-            writer.WriteLine(dateandtime + " " + test + " " + "PASS");
+            Instance.writer.WriteLine(dateandtime + " " + test + " " + "PASS");
         else
-            writer.WriteLine(dateandtime + " " + test + " " + "FAIL");
+            TestingPlatformInstance.writer.WriteLine(dateandtime + " " + test + " " + "FAIL");
     }
 
     public void TestMessage(string message)
     {
-        writer.WriteLine(message);
+        TestingPlatformInstance.writer.WriteLine(message);
     }
 
     public void SetWriter(StreamWriter targetFile)
     {
-        writer = targetFile;
+        TestingPlatformInstance.writer = targetFile;
     }
 
     private void OnDestroy()
     {
-        writer.Close();
+        TestingPlatformInstance.writer.Close();
     }
 }

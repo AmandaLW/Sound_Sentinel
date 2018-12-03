@@ -31,10 +31,10 @@ public class MediaScript : MonoBehaviour
     // Use this for initialization
     public void Start()
     {
-        Init();
+        GetMediaList();
     }
 
-    private void Init()
+    private void GetMediaList()
     {
         //Add VideoPlayer to the GameObject
         videoPlayer = gameObject.AddComponent<VideoPlayer>();

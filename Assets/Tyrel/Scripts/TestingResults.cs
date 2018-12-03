@@ -5,7 +5,7 @@ using System.IO;
 
 public class TestingResults : MonoBehaviour
 {
-    public TestingPlatform temp = TestingPlatform.Instance;
+    public TestingPlatform tests = TestingPlatform.Instance;
 
     
 
@@ -24,7 +24,7 @@ public class TestingResults : MonoBehaviour
         if (time < 0)
         {
             string dateandtime = System.DateTime.Now.ToString("HH:mm:ss");
-            temp.TestMessage(dateandtime + "  Current Fail Speed: " + failedSpeed + "  Number of Failed Balls: " + failedBalls);
+            tests.TestMessage(dateandtime + "  Current Fail Speed: " + failedSpeed + "  Number of Failed Balls: " + failedBalls);
             failedBalls = 0;
             failedSpeed = 100;
             time = 15;
