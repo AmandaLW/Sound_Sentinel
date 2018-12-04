@@ -16,11 +16,12 @@ public class ReportTest : MonoBehaviour {
 
     private void OnApplicationQuit()
     {
-        TestingResults tests = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
+        //TestingResults tests = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
 
-        tests.tests.RecordTests(gameObject.name, true);
+        //tests.RecordTests(gameObject.name, true);
 
         //TestingPlatform.Instance.RecordTests(gameObject.name, true);
+        GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>().RecordTests(gameObject.name, true);
 
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class ColorChange : MonoBehaviour {
 
-    Color[] colors = { Color.blue, Color.cyan, Color.green, new Color(255, 165, 0), Color.red, Color.black };
+    Color[] colors = { Color.blue, Color.cyan, Color.green, Color.red, Color.black };
+    //Color[] colors = { Color.green, Color.red };
     int count;
     float time = (float)0.5;
     Scene m_Scene;
@@ -40,6 +41,10 @@ public class ColorChange : MonoBehaviour {
         {
             ballRenderer.material.color = colors[count];
             count++;
+            if (count == colors.Length)
+            {
+                ballRenderer = Resources.Load<Renderer>("Tyrel/Texture/VideoMaterialTexture");
+            }
             time = (float)0.5;
         }
     }

@@ -31,17 +31,25 @@ public class MediaScript : MonoBehaviour
     // Use this for initialization
     public void Start()
     {
-        GetMediaList();
-    }
-
-    private void GetMediaList()
-    {
         //Add VideoPlayer to the GameObject
         videoPlayer = gameObject.AddComponent<VideoPlayer>();
 
         //Add AudioSource to the GameObject
         musicSource = gameObject.AddComponent<AudioSource>();
 
+        var media = VideoSingleton.Instance.VideoString;
+        if (media == "random")
+        {
+            GetMediaList();
+            PlayNext(multimedia[multimediaIndex]);
+        }
+        else
+            PlayNext(media);
+        
+    }
+
+    private void GetMediaList()
+    {
         //Initialize the path
         //Application.dataPath returns the Assets folder when being run in Unity
         m_path = Application.dataPath + "/Resources/Tyrel/";
@@ -55,8 +63,6 @@ public class MediaScript : MonoBehaviour
 
         multimediaIndex = Random.Range(0, multimedia.Count - 1);
         //multimediaIndex = multimedia.Count - 2;
-
-        PlayNext();
     }
 
     
@@ -70,18 +76,19 @@ public class MediaScript : MonoBehaviour
             if (mediaType == "mp4" && ((float)videoPlayer.frameCount - videoPlayer.frame) < 10 && musicPaused == false)
             {
                 multimediaIndex = (multimediaIndex + 1) % multimedia.Count;
-                PlayNext();
+                //PlayNext(multimedia[multimediaIndex]);
+                
             }
             else if (mediaType == "mp3" && !musicSource.isPlaying && musicPaused == false)
             {
                 multimediaIndex = (multimediaIndex + 1) % multimedia.Count;
-                PlayNext();
+                //PlayNext(multimedia[multimediaIndex]);
             }
             time = 1;
         }
     }
 
-    virtual public void PlayVideo()
+    virtual public void PlayVideo(string videoSource)
     {
         //Set display target to override current object material
         //videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
@@ -97,7 +104,7 @@ public class MediaScript : MonoBehaviour
         videoPlayer.source = VideoSource.Url;
 
         //Set video To Play then prepare Audio to prevent Buffering
-        videoPlayer.url = multimedia[multimediaIndex];
+        videoPlayer.url = videoSource;
 
         //Set Audio Output to AudioSource
         videoPlayer.audioOutputMode = VideoAudioOutputMode.Direct;
@@ -106,10 +113,10 @@ public class MediaScript : MonoBehaviour
         videoPlayer.Play();
     }
 
-    private void PlayMusic()
+    private void PlayMusic(string music)
     {
         //Load file as audio clip
-        musicSource.clip = Resources.Load<AudioClip>(System.IO.Path.GetFileNameWithoutExtension(multimedia[multimediaIndex]));
+        musicSource.clip = Resources.Load<AudioClip>(System.IO.Path.GetFileNameWithoutExtension(music));
        
         //Play song
         musicSource.Play();
@@ -117,26 +124,26 @@ public class MediaScript : MonoBehaviour
         //Add the call to visualization function for the song here
     }
 
-    private void PlayNext()
+    private void PlayNext(string media)
     {
         //Call function to play MP4
-        if (multimedia[multimediaIndex].Contains(".mp4"))
+        if (media.Contains(".mp4"))
         {
             mediaType = "mp4";
-            PlayVideo();
+            PlayVideo(media);
         }
         //Call the function to play MP3
-        else if (multimedia[multimediaIndex].Contains(".mp3"))
+        else if (media.Contains(".mp3"))
         {
             mediaType = "mp3";
-            PlayMusic();
+            PlayMusic(media);
         }
         //If the media type is incorrect then it will send a debug log and play the next song
         else
         {
             Debug.Log(System.DateTime.Now.ToString("HH:mm:ss") + "-  Invalid media type.");
             multimediaIndex = (multimediaIndex + 1) % multimedia.Count;
-            PlayNext();
+            PlayNext(multimedia[multimediaIndex]);
         }
     }
 
@@ -159,8 +166,8 @@ public class MediaScript : MonoBehaviour
     private void OnApplicationQuit()
     {
         //TestingResults temp = GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>();
-        //temp.RecordTests("MediaScript", true);
-        TestingPlatform.Instance.RecordTests(gameObject.name, true);
+        GameObject.FindGameObjectWithTag("Testing").GetComponent<TestingResults>().RecordTests("MediaScript", true);
+        //TestingPlatform.Instance.RecordTests(gameObject.name, true);
         //Resources.UnloadAsset(videoPlayer);
     }
 }
