@@ -42,7 +42,7 @@ public class TopScores : MonoBehaviour {
         for (int k = 0; k < 10; k++)
         {
             string textString = (namesFromFile[((fileLength / 2) - (1 + k))] + " " + scores[((fileLength / 2) - (1 + k))].ToString());
-            Debug.Log(textString);
+            //Debug.Log(textString);
             Transform displayedScore = Instantiate(textBox, new Vector3(0, yCoord, zCoord), Quaternion.identity, scoreCanvas);
             //text properties are set and can be changed easily
             displayedScore.GetComponentInChildren<Text>().text = textString;
@@ -71,7 +71,7 @@ public class TopScores : MonoBehaviour {
                 y = names[i + 1];
                 if(e > t)
                 {
-                    Debug.Log(("swapping" + y + " " + t + " with " + r + " " + e));
+                    //Debug.Log(("swapping" + y + " " + t + " with " + r + " " + e));
                     scores[i] = t;
                     scores[i + 1] = e;
                     names[i] = y;

@@ -8,26 +8,27 @@ public class Pause_Script : MonoBehaviour {
     public KeyCode vivePauseButton;
     public KeyCode keyboardPauseButton;// = "Escape";
     public KeyCode resumeButton;
-    GameObject tempObject;
+    public GameObject tempObject;
     GameObject[] tempObjectTwo;
     // Use this for initialization
     //When scene loads turn off pause menu buttons
     void Start()
     {
-        tempObject = GameObject.FindGameObjectWithTag("shield");
-        tempObject.SetActive(false);
+       // tempObject = GameObject.FindGameObjectWithTag("shield");
+        
+        /*
         tempObjectTwo = GameObject.FindGameObjectsWithTag("Button");
         for (int x = 0; x < tempObjectTwo.Length; x++)
         {
           tempObjectTwo[x].SetActive(false);
-        }
+        }*/
     }
     //watch for either pause button to be pressed and open pause menu when it does
     void Update()
     {
         if (Input.GetKey(vivePauseButton) || Input.GetKey(keyboardPauseButton))
         {
-            
+            tempObject.SetActive(false);
             canvas.enabled = true;
             //reenable pause buttons
             tempObjectTwo = GameObject.FindGameObjectsWithTag("Button");

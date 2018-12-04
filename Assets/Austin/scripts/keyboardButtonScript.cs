@@ -7,13 +7,16 @@ public class keyboardButtonScript : MonoBehaviour {
     public void SetLetter(string letter)
     {
         keyboardLetter = letter;
+        Debug.Log(keyboardLetter);
     }
 
     public void addLetterToName()
     {
         if (VideoSingleton.Instance.playerName.Length < 12)
         {
+            Debug.Log(VideoSingleton.Instance.playerName);
             VideoSingleton.Instance.playerName = (VideoSingleton.Instance.playerName + keyboardLetter);
+            Debug.Log(VideoSingleton.Instance.playerName);
         }
     }
     public void backspace()

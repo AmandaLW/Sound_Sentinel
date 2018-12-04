@@ -24,7 +24,7 @@ public class VideoMenuScript : MonoBehaviour {
       
         //Debug.Log(filePaths[0]);
         float yCoord = 2f;
-        float zCoord = 1.5f;
+        float zCoord = 2.2f;
         //step through all specified file types
         for (int k = 0; k < fileTypes.Length; k++)
         {
