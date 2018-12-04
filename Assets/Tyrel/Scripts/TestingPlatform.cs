@@ -30,7 +30,7 @@ public class TestingPlatform {
         }
     }
     // Use this for initializing the test file in the Singleton TestingPlatform
-    private string testOutputFile;
+    /*private string testOutputFile;
     void Start()
     {
         string dateandtime = System.DateTime.Now.ToString("yyyy MMM dd  HH.mm.ss");
@@ -74,5 +74,5 @@ public class TestingPlatform {
     private void OnDestroy()
     {
         TestingPlatformInstance.writer.Close();
-    }
+    }*/
 }

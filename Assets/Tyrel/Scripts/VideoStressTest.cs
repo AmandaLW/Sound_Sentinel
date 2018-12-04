@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class VideoStressTest : MediaScript
 {   
-    override public void PlayVideo()
+    override public void PlayVideo(string video)
     {
         //Set display target to override current object material
         videoPlayer.renderMode = VideoRenderMode.MaterialOverride;
