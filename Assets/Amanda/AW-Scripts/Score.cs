@@ -12,12 +12,17 @@ public class Score : MonoBehaviour
 {
     private Text scoreText;
     private int score;
-
+    string playerName = "pizza";
+    
     void Start()
     {
         scoreText = gameObject.GetComponent<Text>();
         score = 0;
-      
+        if (VideoSingleton.Instance.playerName.Length  > 0)
+        {
+            playerName = VideoSingleton.Instance.playerName;
+        }
+
 
     }
 
@@ -33,14 +38,10 @@ public class Score : MonoBehaviour
     }
 
     private void OnDestroy()
-    {
-        string playerName = "pizza";
+    {   
         //this is where the score will be saved
         string path = (Application.dataPath + "/Austin/Score.txt");
-        if (VideoSingleton.Instance.playerName.Length > 0)
-        {
-            playerName = VideoSingleton.Instance.playerName;
-        }
+        
         //Write score to file
         StreamWriter writer = new StreamWriter(path, true);
         writer.WriteLine(playerName);

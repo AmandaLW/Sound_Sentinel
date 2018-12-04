@@ -30,6 +30,7 @@ public class Pause_Script : MonoBehaviour {
             
             canvas.enabled = true;
             //reenable pause buttons
+            tempObjectTwo = GameObject.FindGameObjectsWithTag("Button");
             for (int k = 0; k < tempObjectTwo.Length; k++)
             {
                 tempObjectTwo[k].SetActive(true);
