@@ -37,14 +37,14 @@ public class MediaScript : MonoBehaviour
         //Add AudioSource to the GameObject
         musicSource = gameObject.AddComponent<AudioSource>();
 
-        var media = VideoSingleton.Instance.VideoString;
-        if (media == "random")
+        //var media = VideoSingleton.Instance.VideoString;
+        if (VideoSingleton.Instance.VideoString == "random")
         {
             GetMediaList();
             PlayNext(multimedia[multimediaIndex]);
         }
         else
-            PlayNext(media);
+            PlayNext(VideoSingleton.Instance.VideoString);
         
     }
 
@@ -76,13 +76,16 @@ public class MediaScript : MonoBehaviour
             if (mediaType == "mp4" && ((float)videoPlayer.frameCount - videoPlayer.frame) < 10 && musicPaused == false)
             {
                 multimediaIndex = (multimediaIndex + 1) % multimedia.Count;
-                //PlayNext(multimedia[multimediaIndex]);
-                
+                if (VideoSingleton.Instance.VideoString == "random")
+                    PlayNext(multimedia[multimediaIndex]);                
             }
             else if (mediaType == "mp3" && !musicSource.isPlaying && musicPaused == false)
             {
                 multimediaIndex = (multimediaIndex + 1) % multimedia.Count;
-                //PlayNext(multimedia[multimediaIndex]);
+                if (VideoSingleton.Instance.VideoString == "random")
+                    PlayNext(multimedia[multimediaIndex]);
+                else
+                    SceneChange.SceneChanger("Menu_Scene");
             }
             time = 1;
         }

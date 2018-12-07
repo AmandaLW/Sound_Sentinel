@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class ColorChange : MonoBehaviour {
 
-    Color[] colors = { Color.blue, Color.cyan, Color.green, Color.red, Color.black };
-    //Color[] colors = { Color.green, Color.red };
+    //Color[] colors = { Color.blue, Color.cyan, Color.green, Color.red, Color.black };
+    Color[] colors = { Color.red };
     int count;
     float time = (float)0.5;
     Scene m_Scene;
     string mainScene = "Sound_Sentinel";
 
-    Renderer ballRenderer;
+    public Renderer ballRenderer;
+    public Texture albedo;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,7 @@ public class ColorChange : MonoBehaviour {
         {
             count = 0;
             ballRenderer = gameObject.GetComponent<Renderer>();
+            albedo = ballRenderer.material.mainTexture;
             ballRenderer.material.color = Color.yellow;
         }
         else
@@ -31,7 +34,7 @@ public class ColorChange : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	virtual public void Update () {
         time = time - Time.deltaTime;
 	}
 
@@ -41,12 +44,16 @@ public class ColorChange : MonoBehaviour {
         {
             ballRenderer.material.color = colors[count];
             count++;
-            if (count == colors.Length)
-            {
-                ballRenderer = Resources.Load<Renderer>("Tyrel/Texture/VideoMaterialTexture");
-            }
             time = (float)0.5;
         }
+        if(ballRenderer.material.color == Color.red)
+        {
+            ballRenderer.material.mainTexture = Resources.Load<Texture>("Tyrel/Texture/VideoMaterialTexture");
+            //ballRenderer.material.SetColor("_EmissionColor", Resources.Load<Color>("Tyrel/Texture/VideoMaterialTexture"));
+            //Debug.Log(ballRenderer.material.GetTexturePropertyNameIDs());
+            //ballRenderer.material.SetTexture("_MainTex", Resources.Load<Texture>("Tyrel/Texture/VideoMaterialTexture"));
+        }
+        albedo = ballRenderer.material.mainTexture;
     }
 
     public int GetColor()
