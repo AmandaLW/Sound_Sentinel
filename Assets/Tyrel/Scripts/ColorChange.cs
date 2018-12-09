@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ColorChange : MonoBehaviour {
 
-    //Color[] colors = { Color.blue, Color.cyan, Color.green, Color.red, Color.black };
-    Color[] colors = { Color.red };
+    Color[] colors = { Color.yellow, Color.blue, Color.cyan, Color.green, Color.red, Color.black };
+    //Color[] colors = { Color.red };
     int count;
     float time = (float)0.5;
     Scene m_Scene;
@@ -24,7 +24,7 @@ public class ColorChange : MonoBehaviour {
             count = 0;
             ballRenderer = gameObject.GetComponent<Renderer>();
             albedo = ballRenderer.material.mainTexture;
-            ballRenderer.material.color = Color.yellow;
+            ballRenderer.material.color = colors[count++];
         }
         else
         {
@@ -59,5 +59,10 @@ public class ColorChange : MonoBehaviour {
     public int GetColor()
     {
         return count;
+    }
+
+    public Color[] GetColorArray()
+    {
+        return colors;
     }
 }

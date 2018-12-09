@@ -16,7 +16,7 @@ public class Hint_Script : MonoBehaviour {
         string textString;
         for (int x = 0; x < (colors.Length - 1); x++)
         {
-            textString = "Balls of this color are worth " + (x + 1) + " points.";
+            textString = "Balls of this color are worth " + (x - 1) + " points.";
             Transform hintText = Instantiate(ballText, new Vector3(xCoord, yCoord, zCoord), Quaternion.identity, hintPanel);
             hintText.GetComponentInChildren<Text>().text = textString;
             hintText.GetComponentInChildren<Text>().color = colors[x];

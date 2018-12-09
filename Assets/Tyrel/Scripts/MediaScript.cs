@@ -77,7 +77,9 @@ public class MediaScript : MonoBehaviour
             {
                 multimediaIndex = (multimediaIndex + 1) % multimedia.Count;
                 if (VideoSingleton.Instance.VideoString == "random")
-                    PlayNext(multimedia[multimediaIndex]);                
+                    PlayNext(multimedia[multimediaIndex]);
+                else
+                    gameObject.GetComponent<SceneChange>().SceneChanger("Menu_Scene");
             }
             else if (mediaType == "mp3" && !musicSource.isPlaying && musicPaused == false)
             {
@@ -85,7 +87,7 @@ public class MediaScript : MonoBehaviour
                 if (VideoSingleton.Instance.VideoString == "random")
                     PlayNext(multimedia[multimediaIndex]);
                 else
-                    SceneChange.SceneChanger("Menu_Scene");
+                    gameObject.GetComponent<SceneChange>().SceneChanger("Menu_Scene");
             }
             time = 1;
         }

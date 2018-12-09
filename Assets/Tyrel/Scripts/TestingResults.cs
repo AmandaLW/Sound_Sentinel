@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class TestingResults : MonoBehaviour
+public class TestingResults : Singleton<TestingResults>
 {
+    protected TestingResults() {}
+    
     //public TestingPlatform tests = TestingPlatform.Instance;
     protected StreamWriter writer;
     private string testOutputFile;
+    
 
     void Start()
     {
+        Debug.Log("testingresults singleton starting");
         string dateandtime = System.DateTime.Now.ToString("yyyy MMM dd  HH.mm.ss");
         string devFolder = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
         if (devFolder.Contains("Tyrel"))
